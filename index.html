@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AWS Data Engineer Prep</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand" id="brand-home" title="Beranda">
+      <span class="logo">DEA</span>
+      <span>AWS Certified Data Engineer - Associate (DEA-C01) · Latihan</span>
+    </div>
+    <nav class="topnav">
+      <button class="navbtn" data-view="home">Beranda</button>
+      <button class="navbtn" data-view="materi">Materi</button>
+      <button class="navbtn" data-view="history">Riwayat</button>
+      <button class="navbtn" data-view="missed">Salah</button>
+      <button class="navbtn" data-view="browse">Bank soal</button>
+      <a class="navlink" href="summary.html" style="padding:6px 12px;border-radius:6px;color:var(--muted);font-size:14px;text-decoration:none;border:1px solid var(--border)">Ringkasan domain</a>
+    </nav>
+  </header>
+
+  <main id="app" class="container"></main>
+
+  <footer class="footer">
+    <span id="bank-stats"></span>
+    <span>Materi latihan tidak resmi, tidak berafiliasi dengan AWS. Soal dari bank terbuka <a href="https://github.com/itsIbrahimKhalil/aws-dea-c01-study-guide" target="_blank" rel="noopener">DEA-C01 Study Guides</a> (CC BY 4.0), <a href="https://github.com/savemycert/dea-c01-study-guide" target="_blank" rel="noopener">SaveMyCert</a> (CC BY 4.0) dan <a href="https://github.com/erBhushanPawar/aws-dea-c01" target="_blank" rel="noopener">erBhushanPawar/aws-dea-c01</a> (MIT). Selalu cek ke <a href="https://docs.aws.amazon.com/aws-certification/latest/data-engineer-associate-01/data-engineer-associate-01.html" target="_blank" rel="noopener">exam guide resmi</a>.</span>
+  </footer>
+
+  <!-- Question bank: each file pushes into window.QUESTION_BANK -->
+  <script src="js/questions/_init.js"></script>
+  <script src="js/questions/ibrahim.js"></script>
+  <script src="js/questions/savemycert.js"></script>
+  <script src="js/questions/bhushan.js"></script>
+  <script src="js/guide.js"></script>
+  <script src="js/materi.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
