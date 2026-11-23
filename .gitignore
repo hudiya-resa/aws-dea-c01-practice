@@ -1,0 +1,7 @@
+# AWS course transcripts and exam guide copies: kept locally, not redistributed
+tools/sources/skillbuilder/domain?.md
+tools/sources/skillbuilder/*_course.json
+tools/sources/skillbuilder/*_rise.json
+tools/sources/aws-exam-guide/
+__pycache__/
+*.pyc
