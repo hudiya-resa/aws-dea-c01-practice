@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ringkasan Domain DEA-C01</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+.tabs { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:12px; }
+.tabs button { border:1px solid var(--border); background:#fff; padding:7px 12px; border-radius:8px; cursor:pointer; font-size:14px; color:var(--muted); }
+.tabs button.active { background:var(--accent); border-color:var(--accent); color:#fff; }
+.tools { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:16px; }
+.tools input[type=search] { flex:1; min-width:200px; padding:8px 10px; border:1px solid var(--border); border-radius:8px; font-size:14px; }
+.tools label { font-size:14px; color:var(--muted); display:flex; gap:6px; align-items:center; cursor:pointer; }
+.dom-head h2 { margin-bottom:4px; }
+.lesson summary { cursor:pointer; list-style:none; }
+.lesson summary::-webkit-details-marker { display:none; }
+.lesson summary h3 { display:inline; margin:0; font-size:17px; }
+.lesson summary::before { content:"\25B8"; color:var(--accent); margin-right:8px; display:inline-block; transition:transform .15s; }
+.lesson[open] summary::before { transform:rotate(90deg); }
+.sub h4 { margin:16px 0 6px; font-size:15px; color:var(--accent-dark); }
+.sub ul { margin:0; padding-left:20px; line-height:1.55; }
+.sub li { margin:3px 0; }
+li.note { list-style:none; margin-left:-20px; background:var(--warn-bg); padding:6px 10px; border-radius:6px; }
+.is-pola { background:var(--info-bg); border-radius:8px; padding:2px 12px 12px; margin-top:14px; }
+table.pola { width:100%; border-collapse:collapse; font-size:14px; }
+table.pola th { text-align:left; font-size:12px; text-transform:uppercase; letter-spacing:.4px; color:var(--muted); padding:6px 8px; }
+table.pola td { border-top:1px solid #cfdcec; padding:7px 8px; vertical-align:top; line-height:1.45; }
+table.pola td:first-child { width:45%; }
+.special h3 { margin-top:0; }
+.special ul { padding-left:20px; line-height:1.55; }
+.sp-jebakan { border-left:4px solid var(--bad); }
+.sp-angka { border-left:4px solid var(--ok); }
+mark { background:#ffe58a; padding:0 1px; }
+.hide { display:none !important; }
+body.only-pola .sub:not(.is-pola), body.only-pola .special:not(.sp-jebakan):not(.sp-angka) { display:none; }
+@media (max-width:600px) { table.pola td:first-child { width:auto; } table.pola, table.pola tbody, table.pola tr, table.pola td { display:block; } table.pola thead { display:none; } table.pola td:last-child { border-top:none; padding-top:0; font-weight:600; } }
+@media print { .topbar, .tabs, .tools, .footer { display:none; } .domain { display:block !important; } details.lesson { break-inside:avoid-page; } }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="index.html" style="text-decoration:none;color:inherit"><span class="logo">DEA</span><span>Ringkasan Domain Review (Skill Builder)</span></a>
+  <nav class="topnav">
+    <a class="navbtn" id="langlink" href="summary.html" style="text-decoration:none;border-color:var(--border)">English</a>
+    <a class="navbtn" href="index.html" style="text-decoration:none">Kembali ke latihan</a>
+  </nav>
+</header>
+<main class="container">
+  <p class="muted small">Diringkas dari transkrip video dan teks kursus "Domain 1-4 Review: AWS Certified Data Engineer - Associate (DEA-C01)" di AWS Skill Builder, diambil 15-11-2026.</p>
+  <div class="tabs" id="tabs"><button data-tab="1">D1: Data Ingestion and Transformation</button><button data-tab="2">D2: Data Store Management</button><button data-tab="3">D3: Data Operations and Support</button><button data-tab="4">D4: Data Security and Governance</button><button data-tab="all">Semua</button></div>
+  <div class="tools">
+    <input type="search" id="q" placeholder="Cari (mis. Kinesis, KMS, partition)">
+    <label><input type="checkbox" id="onlyPola"> Pola soal, angka, dan jebakan saja</label>
+    <label><input type="checkbox" id="collapse"> Tutup semua lesson</label>
+  </div>
+  <section class="domain" id="d1" data-dom="1">
+<div class="card dom-head"><h2>Domain 1: Data Ingestion and Transformation</h2><p class="muted">Cara memasukkan data ke AWS, mengubahnya jadi berguna, mengatur alur pipeline, dan konsep pemrograman di baliknya.</p></div>
+<details class="card lesson" open id="d1l0"><summary><h3>Domain 1 introduction</h3></summary>
+<div class="sub">
+<h4>Ingestion dan integration</h4>
+<ul><li>Data ingestion: memindahkan data dari titik A ke titik B.</li><li>Data integration: menggabungkan beberapa sumber jadi dataset baru (contoh: advertising plus web analytics jadi user profile). Ini bagian dari transformation.</li><li>Cara ingest: direct database connection, change data capture, API, message queue, event streaming, file export, object storage (Amazon S3).</li><li>Cara transform: queries, modeling, transformations.</li></ul>
+</div>
+<div class="sub">
+<h4>Empat task statement</h4>
+<ul><li>1.1 Perform data ingestion: throughput, latency, streaming dan batch.</li><li>1.2 Transform and process data: ETL pipeline, volume, velocity, variety, distributed computing.</li><li>1.3 Orchestrate data pipelines: jadwal, dependency, event-driven, serverless workflow.</li><li>1.4 Apply programming concepts: CI/CD, SQL, infrastructure as code, data structure (graph, tree).</li></ul>
+</div>
+<div class="sub is-pola">
+<h4>Pola soal</h4>
+<table class="pola"><thead><tr><th>Kalau soal menyebut</th><th>Pilih</th></tr></thead><tbody><tr><td>Soal error, limit, throttling</td><td>fokus ke Amazon DynamoDB, Amazon RDS, Amazon Kinesis (disebut instruktur).</td></tr><tr><td>Gabung data banyak sumber jadi dataset baru</td><td>data integration, bagian dari transformation.</td></tr><tr><td>Pindah data apa adanya ke target</td><td>data ingestion.</td></tr></tbody></table>
+</div>
+</details>
+<details class="card lesson" open id="d1l1"><summary><h3>Lesson 1: Perform data ingestion</h3></summary>
+<div class="sub">
+<h4>Lifecycle dan konsep dasar</h4>
+<ul><li>Stage: generation, storage, ingestion, transformation, serving.</li><li>Generation adalah source system. Data engineer memakai datanya tapi tidak mengendalikan sistemnya.</li><li>Dua konsep besar: batch vs streaming, push vs pull.</li><li>Alur: producer (database, mobile, aplikasi) ke alat ingestion ke consumer (EC2, database AWS, Lambda).</li></ul>
+</div>
+<div class="sub">
+<h4>Replayability</h4>
+<ul><li>Pipeline bisa memproses ulang data saat gagal atau logika berubah.</li><li>Rancang event-driven: Amazon S3, Amazon Kinesis, Amazon EventBridge memicu event saat data baru datang.</li><li>Uji idempotent: data sama diproses berkali kali tanpa hilang atau dobel.</li><li>Pasang checkpoint supaya bisa lanjut dari titik terakhir yang sukses.</li><li>Simpan raw atau intermediate data di S3 (versioning, compliance, replay). Deploy dengan CloudFormation atau AWS CDK.</li></ul>
+</div>
+<div class="sub">
+<h4>Contoh S3, Athena, Redshift</h4>
+<ul><li>File TSV di S3: daftarkan ke Amazon Athena lalu query ad hoc dengan SQL. Ubah ke Parquet supaya query lebih cepat.</li><li>Tim BI butuh warehouse: masukkan ke Amazon Redshift, gabungkan dengan data S3 lewat Redshift Spectrum.</li><li>Tabel Athena ikut update saat data baru tiba: AWS Glue crawler.</li><li>COPY lambat dari satu gzip besar: pecah jadi file kecil, jumlahnya kelipatan jumlah slice. COPY memakai MPP dan memuat paralel. Atur distribution key.</li></ul>
+</div>
+<div class="sub">
+<h4>Service per use case</h4>
+<ul><li>Data lake: S3, tanpa schema di awal. Warehouse atau lakehouse: Redshift dan Redshift Spectrum.</li><li>Big data processing: Amazon EMR. Real-time analytics: Kinesis dan Amazon MSK.</li><li>Operational analytics (monitoring aplikasi, log, clickstream) near real time: Amazon OpenSearch Service.</li><li>Transactional (data kecil, cepat): DynamoDB dan RDS. AWS DMS memakai transaction log untuk CDC, migrasi engine (Oracle ke Aurora), dan replikasi terus ke S3.</li></ul>
+</div>
+<div class="sub">
+<h4>Lima V data</h4>
+<ul><li>Variety: jenis data. Volume: ukuran dan pertumbuhan, perhatikan batas ukuran record per service.</li><li>Velocity: bedakan real time dan near real time. Service untuk traffic naik turun: Kinesis, MSK, OpenSearch, Lambda.</li><li>Veracity: kualitas dan kelengkapan (contoh sensor IoT mati).</li><li>Value: V paling penting. Data yang diolah tapi tidak bernilai adalah buang uang.</li></ul>
+</div>
+<div class="sub">
+<h4>Keluarga Kinesis</h4>
+<ul><li>Streaming: banyak event kecil (sekitar 1 KB), hot data, dibatasi waktu atau jumlah event.</li><li>Kinesis Data Firehose: buffer sesuai periode lalu tulis ke S3, Redshift, OpenSearch Service. Catatan: sekarang bernama Amazon Data Firehose.</li><li>Kinesis Data Streams: real time, latency rendah, aplikasi custom.</li><li>Amazon Managed Service for Apache Flink (dulu Kinesis Data Analytics): analitik stream pakai SQL atau Flink.</li><li>Kinesis Video Streams: video, audio, thermal imagery, radar. Kinesis Agent: baca file lalu kirim ke Streams atau Firehose.</li><li>Hot shard (write throttled): UpdateShardCount untuk tambah shard, random partition key, pasang alarm metrik.</li></ul>
+</div>
+<div class="sub">
+<h4>Service ingestion lain dan batch</h4>
+<ul><li>MSK untuk mengganti cluster Kafka yang ada, bayar cluster walau idle. Kinesis serverless, bayar throughput.</li><li>Amazon AppFlow: dari SaaS. AWS Transfer Family: FTP dan SFTP ke S3. AWS DataSync: on-premises NFS dan SMB. Snow Family: data sangat besar.</li><li>Batch: payload besar, jadwal per jam sampai mingguan, untuk cold data. EMR (Spark plus JDBC) atau AWS Glue (fully managed ETL, JDBC, Glue Studio).</li><li>Stateful: ElastiCache for Redis, RDS. Stateless: Lambda, API Gateway, S3.</li></ul>
+</div>
+<div class="sub is-pola">
+<h4>Pola soal</h4>
+<table class="pola"><thead><tr><th>Kalau soal menyebut</th><th>Pilih</th></tr></thead><tbody><tr><td>Query ad hoc file di S3</td><td>Amazon Athena.</td></tr><tr><td>Tabel Athena perlu update saat data baru tiba</td><td>Glue crawler.</td></tr><tr><td>Data warehouse plus data di S3</td><td>Redshift plus Redshift Spectrum.</td></tr><tr><td>COPY Redshift lambat dari satu file besar</td><td>pecah jadi kelipatan jumlah slice.</td></tr><tr><td>Kinesis Data Streams throttled</td><td>UpdateShardCount plus random partition key.</td></tr><tr><td>Streaming baru, bayar sesuai throughput</td><td>Kinesis. Migrasi Kafka yang ada =&gt; MSK.</td></tr><tr><td>SaaS</td><td>AppFlow. FTP atau SFTP =&gt; Transfer Family. NFS atau SMB on-premises =&gt; DataSync. Data sangat besar =&gt; Snow Family.</td></tr><tr><td>Replikasi perubahan database terus ke S3</td><td>AWS DMS.</td></tr><tr><td>Log dan clickstream near real time dengan pencarian</td><td>OpenSearch Service.</td></tr></tbody></table>
+</div>
+</details>
+<details class="card lesson" open id="d1l2"><summary><h3>Lesson 2: Transform and process data</h3></summary>
+<div class="sub">
+<h4>Modeling, OLTP, OLAP</h4>
+<ul><li>Pahami model conceptual, logical, physical, normalization, dan data vault.</li><li>OLTP: transaksi real time, state terbaru, storage kecil, respons cepat (order, payment).</li><li>OLAP: analisis dan reporting, histori, star atau snowflake schema, storage terabyte sampai petabyte.</li><li>Transformasi: ubah tipe data, standarkan format, buang data jelek, agregasi untuk report atau fitur ML.</li><li>Transformasi bisa terjadi saat ingestion. Contoh: Firehose menulis Parquet.</li></ul>
+</div>
+<div class="sub">
+<h4>Service processing</h4>
+<ul><li>Cloud computing: Lambda, EMR, Glue, Redshift. Distributed: EMR, AWS Batch, Step Functions.</li><li>Lambda untuk validasi dan transform ringan, misalnya tiap file CSV yang masuk S3.</li><li>AWS Glue: serverless, engine Python atau Spark, data di S3.</li><li>Glue Data Catalog memberi logical view atas file hasil DMS (satu prefix per tabel). Query lewat Athena atau dipakai di kode ETL EMR dan Glue.</li><li>Glue crawler menebak schema dan mengisi katalog otomatis.</li></ul>
+</div>
+<div class="sub">
+<h4>Glue vs EMR vs Flink</h4>
+<ul><li>EMR: Hadoop penuh (Spark, Hive, Hudi, HBase, Presto, Pig), lebih mampu dari Glue, tapi tidak fully managed.</li><li>Spark di EMR: buat cluster, atur memory dan executor cores, kirim job dengan spark-submit, scale naik atau turun.</li><li>Glue: fully managed, cukup untuk cleansing, enrichment, data movement.</li><li>Flink: transformasi dasar SQL. Transformasi kompleks pindah ke EMR atau Glue.</li></ul>
+</div>
+<div class="sub">
+<h4>Contoh arsitektur</h4>
+<ul><li>IoT aman near real time: Firehose ke S3, Lambda membuang data sensitif sebelum disimpan.</li><li>Log web di EC2: Kinesis Agent ke Firehose, ke S3 dan ke Flink, lalu Firehose kedua ke OpenSearch, visual di Kibana.</li><li>Kurangi beban Redshift saat join histori di S3: Redshift Spectrum external table.</li><li>Enrich CloudWatch Logs dengan DynamoDB: subscription CloudWatch Logs ke Firehose, Lambda untuk enrich, tujuan S3.</li></ul>
+</div>
+<div class="sub">
+<h4>Troubleshooting</h4>
+<ul><li>Cek log service, kualitas data tiap stage, lalu logika mapping, filter, agregasi.</li><li>Glue punya development mode dan debugging mode. Debug dengan dataset kecil.</li><li>Optimasi: partitioning, paralel, tuning memory dan executor, caching.</li><li>Incremental processing untuk data baru saja. Retry untuk gangguan sementara.</li><li>Uji unit, integration, end-to-end di staging.</li></ul>
+</div>
+<div class="sub">
+<h4>Konektivitas dan data API</h4>
+<ul><li>JDBC: Java API. Siapkan driver, buka port di security group inbound, URL berisi host, port, nama database.</li><li>ODBC: instal driver, buat DSN, aplikasi konek lewat DSN.</li><li>RDS, Aurora, Redshift mengurangi konfigurasi JDBC atau ODBC manual.</li><li>Data API: API Gateway (auth, rate limiting, caching, versioning) plus Lambda. Keamanan: IAM, Certificate Manager, API key, OAuth.</li><li>Cache: ElastiCache atau cache API Gateway. Monitor: CloudWatch. CI/CD: CodePipeline dan CodeBuild.</li></ul>
+</div>
+<div class="sub is-pola">
+<h4>Pola soal</h4>
+<table class="pola"><thead><tr><th>Kalau soal menyebut</th><th>Pilih</th></tr></thead><tbody><tr><td>Spark serverless, cukup cleansing dan movement</td><td>AWS Glue.</td></tr><tr><td>Butuh kontrol cluster dan ekosistem Hadoop</td><td>Amazon EMR.</td></tr><tr><td>Transformasi stream dasar pakai SQL</td><td>Managed Service for Apache Flink.</td></tr><tr><td>Validasi ringan tiap file di S3</td><td>Lambda.</td></tr><tr><td>Schema otomatis untuk file di S3</td><td>Glue crawler plus Data Catalog.</td></tr><tr><td>Join histori S3 tanpa membebani Redshift</td><td>Redshift Spectrum.</td></tr><tr><td>IoT near real time, buang data sensitif</td><td>Firehose plus Lambda, ke S3.</td></tr><tr><td>Enrich CloudWatch Logs</td><td>subscription ke Firehose plus Lambda.</td></tr><tr><td>Buka data ke sistem lain secara aman</td><td>API Gateway plus Lambda plus IAM.</td></tr></tbody></table>
+</div>
+</details>
+<details class="card lesson" open id="d1l3"><summary><h3>Lesson 3: Orchestrate data pipelines</h3></summary>
+<div class="sub">
+<h4>Konsep pipeline</h4>
+<ul><li>Kenali arsitektur: data warehouse, data lake, lakehouse, Lambda, Kappa, data mesh. Rujukan: Well-Architected Framework, enam pilar.</li><li>Pipeline: kumpulan task dengan urutan tertentu, sekuensial atau paralel. Urutannya disebut workflow.</li><li>Serverless orchestration: Step Functions dan Lambda.</li><li>Airflow wajib DAG, Step Functions tidak.</li><li>Correction Notice: video menyebut &quot;Directed Acrylic Graph&quot;. Yang benar Directed Acyclic Graph, graph berarah tanpa siklus.</li><li>Banyak file kecil jadi satu batch: kirim manifest file, S3 event notification hanya untuk prefix &quot;manifest&quot;, lalu cek tiap file. Tetap event-driven.</li></ul>
+</div>
+<div class="sub">
+<h4>Kegagalan dan retry</h4>
+<ul><li>Data quality (dapat JSON padahal menunggu CSV) dan code error: hard failure.</li><li>Endpoint error: jaringan sementara soft failure, permission salah hard failure.</li><li>Dependency error: di dalam atau antar pipeline.</li><li>Step Functions: interval 10 detik, backoff rate 1.5, jeda 10, 15, 22.5 detik.</li><li>Alert: Amazon SNS topic dengan subscription email.</li></ul>
+</div>
+<div class="sub">
+<h4>Pilihan service</h4>
+<ul><li>Serverless: AWS Data Pipeline dan Step Functions. Managed open source: Amazon MWAA. Khusus: Glue workflows.</li><li>Data Pipeline: ETL terjadwal antara AWS dan on-premises, bisa JDBC on-premises. Instruktur memilihnya untuk lingkungan kurang kompleks.</li><li>Step Functions: visual low code atau Amazon States Language (JSON), untuk yang lebih kompleks. Dipicu EventBridge atau API.</li><li>Glue workflows: kalau pipeline murni komponen Glue, pakai trigger. Service lain lewat Glue Python shell job dengan Boto3.</li><li>MWAA: Airflow terkelola, DAG ditulis Python.</li><li class=note>Catatan: AWS Data Pipeline sudah maintenance mode sejak 2024. CloudWatch Events sekarang bagian dari EventBridge.</li></ul>
+</div>
+<div class="sub">
+<h4>Contoh pipeline</h4>
+<ul><li>Raw zone dari Firehose, DMS, DataSync. S3 memicu Lambda yang menjalankan crawler.</li><li>Rule CloudWatch Events memicu Glue ETL ke Parquet di processed zone, lalu SNS kirim email.</li><li>Step Functions dengan EMR: Lambda submit Spark job, tunggu, cek status, ke success atau failure.</li><li>Choice state membaca job status. Catch statement menjalankan Lambda notifikasi saat error.</li><li>Athena atas data di dua Region: Glue crawler di satu Region mengkatalog semua Region.</li></ul>
+</div>
+<div class="sub">
+<h4>Best practice</h4>
+<ul><li>Distributed processing, auto scaling, partitioning.</li><li>Storage fault-tolerant: S3 atau EFS. Backup: S3 atau AWS Backup.</li><li>CloudWatch alarm. Retry dengan Step Functions atau Glue workflows.</li><li>Validasi data, testing, version control, CI/CD.</li></ul>
+</div>
+<div class="sub is-pola">
+<h4>Pola soal</h4>
+<table class="pola"><thead><tr><th>Kalau soal menyebut</th><th>Pilih</th></tr></thead><tbody><tr><td>Pipeline murni crawler dan job Glue</td><td>Glue workflows.</td></tr><tr><td>Glue workflow perlu EMR atau SQS</td><td>Python shell job dengan Boto3.</td></tr><tr><td>Airflow terkelola</td><td>Amazon MWAA.</td></tr><tr><td>Banyak job berurutan, kompleks, tanpa aplikasi terpisah</td><td>Step Functions.</td></tr><tr><td>Proses batch hanya setelah semua file lengkap</td><td>manifest file plus filter prefix S3 event.</td></tr><tr><td>Retry dengan jeda makin panjang</td><td>backoff rate Step Functions.</td></tr><tr><td>Email saat gagal atau selesai</td><td>SNS.</td></tr><tr><td>Query Athena lintas Region</td><td>satu Glue crawler mengkatalog semua Region.</td></tr></tbody></table>
+</div>
+</details>
+<details class="card lesson" open id="d1l4"><summary><h3>Lesson 4: Apply programming concepts</h3></summary>
+<div class="sub">
+<h4>SQL vs Spark</h4>
+<ul><li>SQL: standar dan dikenal luas. Spark: lebih fleksibel untuk proses kompleks dengan syarat latency dan throughput.</li><li>Spark di AWS: Glue (serverless), EMR, ECS atau EKS, partner seperti Databricks.</li><li>Target di Redshift berarti ELT, pakai SQL.</li><li>Transform di Spark lalu load ke warehouse berarti ETL, beban warehouse fokus ke query user.</li><li>Redshift: parser dan optimizer membuat query plan, execution engine mengirim kode ke compute node.</li></ul>
+</div>
+<div class="sub">
+<h4>Alat ETL</h4>
+<ul><li>EMR: Hadoop, Spark, HBase, Presto, YARN, Tez, Pig, satu sampai ribuan node.</li><li>Data Pipeline: data node dan activity (S3 data node, Hive activity di EMR, Redshift copy activity).</li><li>Glue Studio: transformasi visual SQL di engine Spark untuk yang tidak bisa Spark. Glue DataBrew: transformasi atas sekumpulan file.</li><li>Nama kolom Athena hanya alfanumerik dan underscore (/var/log jadi var_log).</li></ul>
+</div>
+<div class="sub">
+<h4>Optimasi runtime</h4>
+<ul><li>Paralel dan batch processing.</li><li>Parquet atau ORC, kompresi, partisi per tanggal atau Region.</li><li>Filter data sejak awal, incremental processing.</li><li>Tuning memory dan parallelism, monitor dengan CloudWatch.</li></ul>
+</div>
+<div class="sub">
+<h4>IaC, CI/CD, Lambda</h4>
+<ul><li>CloudFormation atau CDK untuk deploy berulang. AWS SAM untuk Lambda, Step Functions, DynamoDB.</li><li>Template di CodeCommit atau GitHub, CI/CD jalan saat ada commit. Catatan: CodeCommit tidak menerima pelanggan baru sejak 2024.</li><li>Lambda: atur memory, concurrency limit, timeout, retry. Asynchronous invocation kalau tidak perlu respons langsung.</li><li>Provisioned concurrency untuk prewarm. Lambda di VPC menambah latency.</li></ul>
+</div>
+<div class="sub">
+<h4>Data structure dan algoritma</h4>
+<ul><li>Data structure: relational, NoSQL, warehouse, distributed file system, message queue, tree, hash table.</li><li>Algoritma untuk satu data structure jadi tidak efisien di data structure lain. Sorting besar: Quicksort atau Merge Sort.</li><li>Contoh: data pelanggan besar di HDFS di EMR, diproses dengan MapReduce.</li><li>Data hilang di consumer Kinesis Java: idempotent processing dan shard iterator ke posisi sebelum error.</li></ul>
+</div>
+<div class="sub is-pola">
+<h4>Pola soal</h4>
+<table class="pola"><thead><tr><th>Kalau soal menyebut</th><th>Pilih</th></tr></thead><tbody><tr><td>Target transformasi di Redshift</td><td>SQL (ELT).</td></tr><tr><td>Kurangi beban warehouse</td><td>Spark di Glue atau EMR lalu load (ETL).</td></tr><tr><td>Transformasi SQL tanpa skill Spark</td><td>Glue Studio. Transformasi sekumpulan file =&gt; Glue DataBrew.</td></tr><tr><td>Kolom Athena berisi slash, spasi, titik</td><td>ganti dengan underscore.</td></tr><tr><td>Deploy pipeline serverless</td><td>AWS SAM. Infrastruktur berulang =&gt; CloudFormation atau CDK.</td></tr><tr><td>Lambda perlu prewarm</td><td>provisioned concurrency.</td></tr><tr><td>Data hilang di consumer Kinesis</td><td>idempotent plus GetShardIterator.</td></tr><tr><td>Job lambat atas data besar</td><td>Parquet, partisi, kompresi, filter awal.</td></tr></tbody></table>
+</div>
+</details>
+<div class="card special sp-angka"><h3>Angka dan batas penting</h3><ul><li>Payload streaming contoh: sekitar 1 KB per event.</li><li>Jumlah file COPY Redshift: kelipatan jumlah slice.</li><li>Retry Step Functions: interval 10 detik, backoff 1.5, jeda 10, 15, 22.5 detik.</li><li>Batch: per jam, harian, mingguan.</li><li>OLAP: terabyte sampai petabyte.</li><li>Well-Architected: enam pilar. Lima V data. Lifecycle lima stage.</li><li>Kapasitas Kinesis Data Streams dihitung per shard.</li><li>Nama kolom Athena: alfanumerik dan underscore saja.</li></ul></div>
+<div class="card special sp-jebakan"><h3>Jebakan ujian</h3><ul><li>Data Streams (real time, aplikasi custom) vs Firehose (buffer, near real time, langsung ke tujuan).</li><li>Real time vs near real time, baca kata kuncinya.</li><li>Kinesis vs MSK: solusi baru pilih Kinesis, mengganti Kafka yang ada pilih MSK.</li><li>Glue (fully managed) vs EMR (lebih lengkap, perlu kelola cluster).</li><li>Flink hanya untuk transformasi dasar SQL.</li><li>DataSync vs Transfer Family vs Snow Family vs AppFlow: bedakan dari protokol dan sumbernya.</li><li>Hard failure tidak selesai dengan retry. Soft failure bisa.</li><li>Trigger hanya pada file manifest tetap dihitung event-driven.</li><li>Glue workflows hanya pas kalau pipeline murni Glue.</li><li>Stateful (ElastiCache, RDS) vs stateless (Lambda, API Gateway, S3).</li></ul></div>
+<div class="card special sp-sumber"><h3>Sumber tambahan</h3><ul><li>Code Example: Data Preparation Using ResolveChoice, Lambda, and ApplyMapping (<a href="https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-samples-medicaid.html" target="_blank" rel="noopener">link</a>)</li><li>AWS Glue PySpark Transforms Reference (<a href="https://docs.aws.amazon.com/glue/latest/dg/built-in-transforms.html" target="_blank" rel="noopener">link</a>)</li><li>How to Extract, Transform, and Load Data for Analytic Processing Using AWS Glue (Part 2) (<a href="https://aws.amazon.com/blogs/database/how-to-extract-transform-and-load-data-for-analytic-processing-using-aws-glue-part-2/" target="_blank" rel="noopener">link</a>)</li><li>ETL Processing Using AWS Data Pipeline and Amazon Elastic MapReduce (<a href="https://aws.amazon.com/blogs/big-data/etl-processing-using-aws-data-pipeline-and-amazon-elastic-mapreduce/" target="_blank" rel="noopener">link</a>)</li><li>AWS Data Pipeline Concepts (<a href="https://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-concepts.html" target="_blank" rel="noopener">link</a>)</li><li>Working with Pipelines (<a href="https://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-managing-pipeline.html" target="_blank" rel="noopener">link</a>)</li><li>Build a Concurrent Data Orchestration Pipeline Using Amazon EMR and Apache Livy (<a href="https://aws.amazon.com/blogs/big-data/build-a-concurrent-data-orchestration-pipeline-using-amazon-emr-and-apache-livy/" target="_blank" rel="noopener">link</a>)</li><li>Overview of Workflows in AWS Glue (<a href="https://docs.aws.amazon.com/glue/latest/dg/workflows_overview.html" target="_blank" rel="noopener">link</a>)</li><li>Amazon Managed Streaming for Apache Kafka (MSK) (<a href="https://aws.amazon.com/blogs/aws/amazon-managed-streaming-for-apache-kafka-msk-now-generally-available/" target="_blank" rel="noopener">link</a>)</li><li>Amazon Kinesis Data Streams Quotas and Limits (<a href="https://docs.amazonaws.cn/en_us/streams/latest/dev/service-sizes-and-limits.html" target="_blank" rel="noopener">link</a>)</li><li>AWS Glue Components (<a href="https://docs.aws.amazon.com/glue/latest/dg/components-overview.html" target="_blank" rel="noopener">link</a>)</li><li>Overview of Amazon EMR (<a href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-overview.html" target="_blank" rel="noopener">link</a>)</li><li>Device Communication Protocols for AWS IoT (<a href="https://docs.aws.amazon.com/iot/latest/developerguide/iot-message-broker.html" target="_blank" rel="noopener">link</a>)</li><li>Orchestrate an ETL Pipeline with Validation, Transformation, and Partitioning Using AWS Step Functions (<a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/orchestrate-an-etl-pipeline-with-validation-transformation-and-partitioning-using-aws-step-functions.html" target="_blank" rel="noopener">link</a>)</li><li>Tuning Query Performance (<a href="https://docs.aws.amazon.com/redshift/latest/dg/c-optimizing-query-performance.html" target="_blank" rel="noopener">link</a>)</li><li>Basic Git Commands (<a href="https://docs.aws.amazon.com/codecommit/latest/userguide/how-to-basic-git.html" target="_blank" rel="noopener">link</a>)</li><li>GetShardIterator (<a href="https://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html" target="_blank" rel="noopener">link</a>)</li></ul></div>
+</section>
+<section class="domain" id="d2" data-dom="2">
+<div class="card dom-head"><h2>Domain 2: Data Store Management</h2><p class="muted">Memilih data store, membuat data catalog, mengatur lifecycle data, dan merancang data model serta schema evolution.</p></div>
+<details class="card lesson" open id="d2l0"><summary><h3>Domain 2 introduction</h3></summary>
+<div class="sub">
+<h4>Isi domain</h4>
+<ul><li>Empat task statement: 2.1 choose a data store, 2.2 data cataloging systems, 2.3 lifecycle of data, 2.4 data models dan schema evolution.</li><li>Storage adalah tahap ketiga data engineering lifecycle. Data disimpan berkali-kali selama di pipeline.</li><li>Langkah pertama memilih storage: pahami use case, cara data disimpan, dan cara data diambil.</li><li>2.3 mencakup hot dan cold data, optimasi biaya, penghapusan data untuk kebutuhan bisnis dan hukum, retention, archiving, resiliency.</li></ul>
+</div>
+<div class="sub is-pola">
+<h4>Pola soal</h4>
+<table class="pola"><thead><tr><th>Kalau soal menyebut</th><th>Pilih</th></tr></thead><tbody><tr><td>Soal memilih storage</td><td>mulai dari access pattern, baru pilih service.</td></tr><tr><td>Soal biaya storage jangka panjang</td><td>pikirkan lifecycle (hot, warm, cold) dan retention.</td></tr><tr><td>Data harus mudah ditemukan dan dipakai</td><td>data catalog dengan metadata lengkap.</td></tr></tbody></table>
+</div>
+</details>
+<details class="card lesson" open id="d2l1"><summary><h3>Lesson 1: Choose a data store</h3></summary>
+<div class="sub">
+<h4>Tiga jenis storage dasar</h4>
+<ul><li>Amazon S3: object storage, highly available, scalable, durable. Untuk static content, backup, media, dan storage dasar data lake.</li><li>Amazon EFS: file storage fully managed yang dipakai bersama banyak EC2 instance.</li><li>File storage lain: FSx for Windows File Server, FSx for Lustre, FSx for NetApp ONTAP.</li><li>Amazon EBS: block storage persisten yang di-attach ke EC2. Untuk database dan aplikasi transaksional yang butuh low latency.</li></ul>
+</div>
+<div class="sub">
+<h4>Database dan warehouse</h4>
+<ul><li>Amazon RDS: managed relational database (MySQL, PostgreSQL, Oracle, SQL Server, dan lain-lain).</li><li>DynamoDB: managed NoSQL, latency single-digit millisecond di skala berapa pun. Untuk real-time, gaming, IoT, dynamic scaling.</li><li class=note>Catatan: kursus menyebut DynamoDB mendukung graph, memory, dan search. Dalam praktik DynamoDB adalah key-value dan document database.</li><li>Amazon Redshift: data warehouse skala petabyte untuk analytics dan BI, juga bisa menangani semi-structured dan unstructured data volume besar.</li><li>AWS Lake Formation: build, secure, dan manage data lake. Bisa crawl, catalog, dan siapkan data.</li></ul>
+</div>
+<div class="sub">
+<h4>Faktor dan contoh pilihan</h4>
+<ul><li>Faktor performa: IOPS, scalability, durability, data access pattern.</li><li>Highly parallel file system untuk HPC, analytics, ML skala besar: FSx for Lustre.</li><li>In-memory caching, session storage, real-time analytics: ElastiCache.</li><li>Redshift cocok untuk 30 TB data, banyak aggregated query dan complex join yang hanya memakai sebagian kolom. Alasannya columnar storage (I/O kecil), compression, parallel processing, dan dukungan SQL JOIN.</li></ul>
+</div>
+<div class="sub">
+<h4>Migrasi dan akses data</h4>
+<ul><li>COPY command memuat data file ke tabel Redshift, misalnya dari S3 atau EMR. COPY mengubah string ke data type kolom target.</li><li>Kalau butuh konversi lain atau konversi default error, atur lewat parameter COPY.</li><li>Data RDS: 3 bulan terbaru dipakai analitik, data lama sesekali di-join. Solusi: data lama ke S3, job harian dari RDS ke Redshift, join keduanya lewat Redshift Spectrum.</li><li>Petabyte data key-value, akses langsung, SQL-like interface: Hive di EMR, simpan ke DynamoDB.</li><li>EMR untuk job pendek: nyalakan dan matikan cluster, bayar per detik. Workload panjang: cluster highly available dengan auto scaling.</li></ul>
+</div>
+<div class="sub">
+<h4>Mencegah akses tidak sah (Redshift dan RDS)</h4>
+<ul><li>IAM untuk akses ke cluster dan resource, policy sesuai role.</li><li>Security group, encryption, dan key di AWS KMS.</li><li>Parameter group untuk parameter database, termasuk locking untuk concurrency.</li><li>Database auditing, plus jadwal rutin cek access log dan audit trail.</li></ul>
+</div>
+<div class="sub is-pola">
+<h4>Pola soal</h4>
+<table class="pola"><thead><tr><th>Kalau soal menyebut</th><th>Pilih</th></tr></thead><tbody><tr><td>Highly parallel file system, HPC</td><td>FSx for Lustre.</td></tr><tr><td>In-memory cache, latency rendah</td><td>ElastiCache.</td></tr><tr><td>File share untuk banyak EC2</td><td>EFS. Block storage untuk database di EC2 =&gt; EBS.</td></tr><tr><td>Banyak aggregated query dan join, hanya sebagian kolom</td><td>Redshift (columnar).</td></tr><tr><td>Load file dari S3 atau EMR ke Redshift</td><td>COPY, atur parameter kalau konversi error.</td></tr><tr><td>Data lama di S3 di-join dengan data di Redshift</td><td>Redshift Spectrum.</td></tr><tr><td>Petabyte key-value dengan SQL-like interface</td><td>Hive di EMR plus DynamoDB.</td></tr><tr><td>Batasi dan lacak akses Redshift atau RDS</td><td>IAM, security group, KMS, database auditing.</td></tr></tbody></table>
+</div>
+</details>
+<details class="card lesson" open id="d2l2"><summary><h3>Lesson 2: Understand data cataloging systems</h3></summary>
+<div class="sub">
+<h4>Apa itu data catalog</h4>
+<ul><li>Metadata repository: lokasi, deskripsi atau schema, dan runtime metrics data.</li><li>Dipakai untuk federated query dan ETL saat data tersebar di banyak lokasi.</li><li>AWS Glue Data Catalog berisi referensi source dan target ETL job. Satu metadata table mewakili satu data store.</li><li>Biasanya diisi crawler, tapi ada cara lain menambah metadata table.</li><li>Athena memakai catalog untuk tahu lokasi S3, format file (Parquet, CSV), dan partition.</li></ul>
+</div>
+<div class="sub">
+<h4>Lake Formation dan lintas akun</h4>
+<ul><li>Glue menyimpan business attribute sebagai key-value tag di level tabel. Lake Formation bisa key-value property di level kolom.</li><li>Lake Formation mengatur permission di level database, table, dan column.</li><li>Kasus 4 AWS account, tiap business unit hanya akses datanya: data lake storage di tiap akun, catalog ke akun pusat dengan Lake Formation.</li><li>Lalu update S3 bucket policy dengan Lake Formation service-linked role, dan pakai Lake Formation permission untuk akses spesifik.</li><li>User dan Glue ETL job bisa join tabel lintas akun dengan proteksi table-level dan column-level.</li></ul>
+</div>
+<div class="sub">
+<h4>Menjaga catalog tetap terbarui</h4>
+<ul><li>Jalankan Glue crawler setelah data baru masuk.</li><li>Job baru di production: cek bahwa job memakai AWS Glue API untuk update catalog.</li><li>Sinkronisasi partition penting untuk data terpartisi di S3 (tanggal, Region, kategori).</li><li>Langkah: buat database Glue, buat crawler, tentukan partitioning schema, jalankan, jadwalkan sesuai frekuensi ingest, query dengan Athena.</li><li>Partition yang tidak terdeteksi otomatis ditambah atau diubah lewat Glue API.</li></ul>
+</div>
+<div class="sub">
+<h4>Glue connection</h4>
+<ul><li>Connection untuk data source (ingest) atau data target (write).</li><li>S3: path bucket dan pola inclusion/exclusion. RDS: endpoint, port, credential.</li><li>Bisa test connection dulu. Connection dipakai crawler dan ETL job.</li></ul>
+</div>
+<div class="sub">
+<h4>Komponen metadata dan catalog</h4>
+<ul><li>Metadata: schema, data type, data source, timestamp, data quality metrics (akurasi, kelengkapan, konsistensi), ownership dan access control.</li><li>Catalog: table dan database, table schema, partition info, lokasi (S3 path, endpoint), statistik dari crawling.</li><li>Catalog juga: data lineage dan dependency, tag dan label, access control policy, integrasi dengan tools analytics.</li></ul>
+</div>
+<div class="sub">
+<h4>Klasifikasi data</h4>
+<ul><li>Klasifikasi: kelompokkan data menurut sensitivitas supaya kontrol keamanannya pas.</li><li>IAM untuk akses. KMS untuk encryption key. VPC dan security group untuk isolasi.</li><li>SCP di AWS Organizations mencegah member account memakai aksi atau service tertentu.</li><li>Amazon Macie memakai ML untuk menemukan, mengklasifikasi, dan melindungi sensitive data.</li></ul>
+</div>
+<div class="sub is-pola">
+<h4>Pola soal</h4>
+<table class="pola"><thead><tr><th>Kalau soal menyebut</th><th>Pilih</th></tr></thead><tbody><tr><td>Data baru harus otomatis masuk catalog</td><td>Glue crawler setelah ingest.</td></tr><tr><td>Job baru harus mengisi catalog lengkap</td><td>pastikan job memakai Glue API.</td></tr><tr><td>Partition baru tidak muncul di query</td><td>jadwalkan crawler, atau tambah lewat Glue API.</td></tr><tr><td>Permission atau property di level kolom</td><td>Lake Formation.</td></tr><tr><td>Banyak akun, tiap unit hanya akses datanya</td><td>Lake Formation cross-account plus bucket policy dengan service-linked role.</td></tr><tr><td>Temukan sensitive data otomatis</td><td>Amazon Macie.</td></tr><tr><td>Cegah member account memakai service tertentu</td><td>SCP.</td></tr><tr><td>Crawler perlu akses RDS</td><td>Glue connection (endpoint, port, credential).</td></tr></tbody></table>
+</div>
+</details>
+<details class="card lesson" open id="d2l3"><summary><h3>Lesson 3: Manage the lifecycle of data</h3></summary>
+<div class="sub">
+<h4>Hot, warm, cold</h4>
+<ul><li>Tanya: seberapa penting data, berapa lama disimpan, seberapa sering diakses.</li><li>Data baru biasanya lebih sering diakses.</li><li>Semua di hot storage: cepat tapi mahal. Semua di cold: retrieval lama dan bisa ada biaya retrieval.</li><li>Transformasi menghasilkan dataset baru yang juga harus dikelola.</li></ul>
+</div>
+<div class="sub">
+<h4>Optimasi biaya dan retention</h4>
+<ul><li>S3 Lifecycle policy memindahkan data ke storage class lain, atau menghapusnya untuk kebutuhan bisnis dan hukum.</li><li>Redshift: elastic resize untuk tambah atau kurangi node dan ganti node type.</li><li>Ketahui nilai data, cara simpan, dan siapa yang akses. Tanyakan juga apakah data bisa dibuat ulang.</li><li>Regulasi bisa mewajibkan retention tertentu, jadi perlu retention policy dan archiving yang tetap bisa dicari.</li></ul>
+</div>
+<div class="sub">
+<h4>Resiliency dan availability</h4>
+<ul><li>S3 otomatis mereplikasi data ke beberapa Availability Zone.</li><li>RDS Multi-AZ memberi automatic failover saat satu AZ gagal.</li><li>Backup: AWS Backup, automatic snapshot, atau replikasi ke Region lain.</li><li>S3 Versioning melindungi object dari terhapus atau ter-overwrite.</li></ul>
+</div>
+<div class="sub">
+<h4>Menghapus data lama</h4>
+<ul><li>DynamoDB Time to Live (TTL) menghapus item otomatis setelah timestamp tertentu.</li><li>Kasus MSK ke Redshift, query makin lambat dan maintenance makin lama: buat time series table identik per rentang waktu.</li><li>Hapus data lama dengan DROP TABLE, bukan DELETE besar, supaya tidak perlu VACUUM.</li><li>Tabel kecil per waktu lebih teroptimasi untuk query. Kalau di-sort per timestamp, VACUUM bisa tidak perlu.</li></ul>
+</div>
+<div class="sub">
+<h4>Kasus S3 dan Athena</h4>
+<ul><li>CSV di S3 Standard di-query Athena: ubah dengan Glue ETL ke format columnar, compress, partition.</li><li>Lifecycle: S3 Standard ke S3 Standard-IA setelah 6 bulan, lalu ke S3 Glacier setelah 2 tahun.</li></ul>
+</div>
+<div class="sub is-pola">
+<h4>Pola soal</h4>
+<table class="pola"><thead><tr><th>Kalau soal menyebut</th><th>Pilih</th></tr></thead><tbody><tr><td>Data jarang diakses setelah N bulan</td><td>Lifecycle ke S3 Standard-IA.</td></tr><tr><td>Archive wajib regulasi</td><td>Lifecycle ke S3 Glacier.</td></tr><tr><td>Hapus item DynamoDB otomatis</td><td>TTL.</td></tr><tr><td>Redshift lambat, VACUUM lama</td><td>time series table plus DROP TABLE.</td></tr><tr><td>Kapasitas Redshift berubah</td><td>elastic resize.</td></tr><tr><td>Failover otomatis saat AZ gagal</td><td>RDS Multi-AZ.</td></tr><tr><td>Lindungi object dari terhapus</td><td>S3 Versioning.</td></tr><tr><td>Query Athena atas CSV lambat dan mahal</td><td>Glue ETL ke columnar, compress, partition.</td></tr></tbody></table>
+</div>
+</details>
+<details class="card lesson" open id="d2l4"><summary><h3>Lesson 4: Design data models and schema evolution</h3></summary>
+<div class="sub">
+<h4>Data modeling</h4>
+<ul><li>Strict normalization kurang cocok untuk event data yang beragam.</li><li>Redshift mendukung star schema, snowflake schema, dan Kimball.</li><li>Inmon dan data vault bisa, tapi butuh transformasi tambahan dan solusi custom.</li><li>Redshift Serverless dengan Query Editor v2: buat schema dan tabel, import data visual.</li></ul>
+</div>
+<div class="sub">
+<h4>Spark dan lineage</h4>
+<ul><li>EMR menjalankan Spark cluster on demand. spark.read untuk structured data dari S3, spark.sparkContext.textFile untuk raw text.</li><li>Glue crawler menebak schema di S3 dan membuat tabel di catalog, lalu dipakai Spark.</li><li>Athena untuk interactive SQL di S3. Comprehend untuk NLP teks unstructured.</li><li>Data lineage melacak asal, transformasi, dan alur data. Membantu error tracking dan debugging.</li><li>SageMaker ML Lineage Tracking mencatat input data, model, hyperparameter, transformasi, model artifact, dan inference data. Bisa diintegrasikan dengan Glue dan S3.</li></ul>
+</div>
+<div class="sub">
+<h4>Optimasi data</h4>
+<ul><li>RDS: index di kolom yang sering dipakai WHERE atau JOIN. DynamoDB: pilih primary key dan secondary index sesuai pola query.</li><li>S3: partisi ke folder logis, query subset dengan Athena atau Glue.</li><li>Redshift: distribution key dan sort key untuk sebar data merata dan kurangi data movement.</li><li>Compression: gzip atau bzip2 di S3, compression encoding kolom di Redshift. Format Parquet atau ORC di S3.</li><li>Cache: ElastiCache atau CloudFront. Data historis: S3 Glacier atau Glacier Deep Archive.</li><li>DynamoDB provisioned throughput plus auto scaling. Tuning query: RDS Performance Insights, Redshift query monitoring. Transfer: DataSync atau Transfer Family.</li></ul>
+</div>
+<div class="sub">
+<h4>Jenis data dan service</h4>
+<ul><li>Structured: RDS, Aurora, Redshift.</li><li>Semi-structured: DynamoDB, DocumentDB (MongoDB compatibility), Athena, S3.</li><li>Unstructured: S3, Rekognition, Transcribe, Comprehend.</li></ul>
+</div>
+<div class="sub">
+<h4>Schema evolution</h4>
+<ul><li>Field bertambah atau hilang, tipe berubah (string ke integer). Tujuannya menjaga data lama dan backward compatibility.</li><li>DynamoDB: cukup update aplikasi, data lama tanpa atribut baru tetap bisa dipakai.</li><li>RDS dan Aurora lebih rumit: pakai AWS DMS dengan downtime minimal, atau stored procedure.</li><li>Data lake S3 memakai schema on read: data mentah, schema diterapkan saat query lewat Athena atau Glue.</li><li>AWS Glue mendukung schema versioning. Avro, Parquet, ORC mendukung schema evolution by design.</li><li class=note>Catatan: kursus menyebut Avro columnar. Avro sebenarnya row-based, yang columnar Parquet dan ORC.</li></ul>
+</div>
+<div class="sub">
+<h4>Antisipasi dan konversi schema</h4>
+<ul><li>Proaktif: dead letter queue, schema registry, validasi schema, versioning, backup sebelum ubah, monitoring dan alerting.</li><li>Test schema baru: Glue, AWS Data Pipeline, atau custom script. Glue DataBrew untuk profiling data.</li><li class=note>Catatan: AWS Data Pipeline sudah maintenance mode dan tertutup untuk pelanggan baru.</li><li>AWS SCT mengonversi schema dan code antar engine (data type mapping, stored procedure, index), dengan assessment masalah.</li><li>AWS DMS bekerja bersama SCT saat migrasi ke RDS, Aurora, Redshift, dan lainnya.</li></ul>
+</div>
+<div class="sub is-pola">
+<h4>Pola soal</h4>
+<table class="pola"><thead><tr><th>Kalau soal menyebut</th><th>Pilih</th></tr></thead><tbody><tr><td>Model dimensional di warehouse</td><td>Redshift star atau snowflake schema (Kimball).</td></tr><tr><td>Lineage training data sampai inference</td><td>SageMaker ML Lineage Tracking.</td></tr><tr><td>Join Redshift lambat karena data movement</td><td>distribution key dan sort key.</td></tr><tr><td>Query RDS lambat di kolom WHERE</td><td>buat index.</td></tr><tr><td>Tambah field tanpa merusak data lama di S3</td><td>Parquet, ORC, Avro, plus Glue schema versioning.</td></tr><tr><td>Ubah schema RDS dengan downtime minimal</td><td>AWS DMS atau stored procedure.</td></tr><tr><td>Migrasi antar engine</td><td>SCT untuk schema dan code, DMS untuk data.</td></tr><tr><td>Profiling data sebelum schema baru</td><td>Glue DataBrew.</td></tr><tr><td>Record rusak karena schema berubah</td><td>dead letter queue, schema registry.</td></tr></tbody></table>
+</div>
+</details>
+<div class="card special sp-angka"><h3>Angka dan batas penting</h3><ul><li>4 task statement. Storage adalah tahap ke-3 data engineering lifecycle.</li><li>DynamoDB: latency single-digit millisecond.</li><li>Redshift skala petabyte. Contoh kasus 30 TB, ratusan sampai ribuan aggregated query per hari.</li><li>Kasus RDS: 3 bulan data terbaru tetap di database.</li><li>EMR job pendek: bayar per detik.</li><li>Lifecycle S3: Standard-IA setelah 6 bulan, Glacier setelah 2 tahun.</li><li>Kasus lintas akun: 4 AWS account dan satu akun data lake pusat.</li><li>Sinkronisasi partition Glue: 6 langkah.</li></ul></div>
+<div class="card special sp-jebakan"><h3>Jebakan ujian</h3><ul><li>S3 object, EFS file shared, EBS block yang di-attach ke satu EC2. Perhatikan kata &quot;shared&quot; dan &quot;block-level&quot;.</li><li>EFS dan FSx for Lustre sama-sama file storage. Kata &quot;highly parallel&quot; atau HPC berarti FSx for Lustre.</li><li>Redshift Spectrum query data yang tetap di S3. Tidak perlu load ke cluster.</li><li>Konversi tipe gagal saat COPY: jawabannya parameter COPY, bukan ganti service.</li><li>Glue tag di level tabel, Lake Formation sampai level kolom.</li><li>Hapus data Redshift: DROP TABLE lebih baik dari DELETE besar karena tanpa VACUUM.</li><li>DynamoDB TTL untuk item, S3 Lifecycle untuk object. Jangan tertukar.</li><li>Cold storage murah tapi retrieval lama dan berbiaya. Jangan pilih Glacier untuk data yang masih sering di-query.</li><li>Macie menemukan dan mengklasifikasi sensitive data. Akses tetap diatur IAM, Lake Formation, SCP.</li><li>SCT untuk schema dan code, DMS untuk data. Migrasi antar engine biasanya butuh keduanya.</li><li>Inmon dan data vault bisa di Redshift tapi butuh kerja tambahan. Yang didukung langsung: star, snowflake, Kimball.</li></ul></div>
+<div class="card special sp-sumber"><h3>Sumber tambahan</h3><ul><li>What Is Cloud Storage? (<a href="https://aws.amazon.com/what-is/cloud-storage/" target="_blank" rel="noopener">link</a>)</li><li>Tanpa judul, contoh Glue Python Medicaid (<a href="https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-samples-medicaid.html" target="_blank" rel="noopener">link</a>)</li><li>Storage Best Practices for Data and Analytics Applications (<a href="https://docs.aws.amazon.com/whitepapers/latest/building-data-lakes/building-data-lake-aws.html" target="_blank" rel="noopener">link</a>)</li><li>Amazon S3 Tutorials (<a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/tutorials.html" target="_blank" rel="noopener">link</a>)</li><li>Storage Options for Your Amazon EC2 Instances (<a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Storage.html" target="_blank" rel="noopener">link</a>)</li><li>Implementing Microservices on AWS (<a href="https://docs.aws.amazon.com/whitepapers/latest/microservices-on-aws/microservices-on-aws.html" target="_blank" rel="noopener">link</a>)</li><li>Data Store (<a href="https://docs.aws.amazon.com/whitepapers/latest/microservices-on-aws/data-store.html" target="_blank" rel="noopener">link</a>)</li><li>What Is Amazon Redshift? (<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/welcome.html" target="_blank" rel="noopener">link</a>)</li><li>Tanpa judul, blog EMR dan Apache Livy (<a href="https://aws.amazon.com/blogs/big-data/build-a-concurrent-data-orchestration-pipeline-using-amazon-emr-and-apache-livy/" target="_blank" rel="noopener">link</a>)</li><li>Working with Query Editor v2 (<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/query-editor-v2-using.html" target="_blank" rel="noopener">link</a>)</li><li>S3DistCp (s3-dist-cp) (<a href="https://docs.aws.amazon.com/emr/latest/ReleaseGuide/UsingEMR_s3distcp.html" target="_blank" rel="noopener">link</a>)</li><li>AWS Glue Data Catalog (<a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/serverless-etl-aws-glue/aws-glue-data-catalog.html" target="_blank" rel="noopener">link</a>)</li><li>Tanpa judul, Kinesis Data Streams quotas and limits (<a href="https://docs.amazonaws.cn/en_us/streams/latest/dev/service-sizes-and-limits.html" target="_blank" rel="noopener">link</a>)</li><li>Catalog and Search (<a href="https://docs.aws.amazon.com/whitepapers/latest/building-data-lakes/data-cataloging.html" target="_blank" rel="noopener">link</a>)</li></ul></div>
+</section>
+<section class="domain" id="d3" data-dom="3">
+<div class="card dom-head"><h2>Domain 3: Data Operations and Support</h2><p class="muted">Domain ini membahas cara menjalankan pipeline secara otomatis, menganalisis data, memantau pipeline, dan menjaga kualitas data.</p></div>
+<details class="card lesson" open id="d3l0"><summary><h3>Domain 3 introduction</h3></summary>
+<div class="sub">
+<h4>Isi domain</h4>
+<ul><li>Data operations menjalankan data management (quality, governance, security) dalam praktik.</li><li>Empat task statement: 3.1 automate data processing, 3.2 analyze data, 3.3 maintain and monitor data pipelines, 3.4 ensure data quality.</li><li>3.2 mencakup trade-off provisioned vs serverless, SQL, visualisasi, cleansing, aggregation, rolling average, grouping, pivoting.</li><li>3.3 mencakup logging data aplikasi, logging akses ke layanan AWS, performance tuning, dan observability.</li><li>3.4 mencakup data skew, data validation, dan data profiling.</li><li>Tema besarnya: proses transformasi yang repeatable dan reliable.</li></ul>
+</div>
+<div class="sub is-pola">
+<h4>Pola soal</h4>
+<table class="pola"><thead><tr><th>Kalau soal menyebut</th><th>Pilih</th></tr></thead><tbody><tr><td>Pipeline harus bisa diulang dan andal</td><td>pilih yang otomatis (IaC, orchestration, check otomatis), bukan langkah manual.</td></tr><tr><td>Soal menyebut aggregation, rolling average, grouping, atau pivoting</td><td>task 3.2, pilih layanan analisis yang mendukung operasi itu.</td></tr><tr><td>Soal tentang log, audit, dan metric pipeline</td><td>task 3.3, layanan monitoring dan traceability.</td></tr></tbody></table>
+</div>
+</details>
+<details class="card lesson" open id="d3l1"><summary><h3>Lesson 1: Automate data processing by using AWS services</h3></summary>
+<div class="sub">
+<h4>Infrastructure as code dan CI/CD</h4>
+<ul><li>CloudFormation template bisa membuat seluruh pipeline: S3 bucket, EventBridge rule, Lambda, SNS topic, Step Functions, Glue job, Glue crawler.</li><li>Contoh alur: file masuk S3, EventBridge memicu Lambda validasi, Lambda memulai state machine, state machine menjalankan Glue job, lalu Glue crawler memperbarui Data Catalog. SNS memberi notifikasi kalau gagal.</li><li>Template disimpan di S3 atau CodeCommit untuk akses dan versi.</li><li>CodePipeline mengotomatiskan CI/CD. Commit file Python ke CodeCommit memicu CodeBuild untuk build, integrasi, dan unit test.</li><li>Continuous delivery menambah end-to-end test: ingest file, jalankan transformasi, validasi output.</li><li class=note>Catatan: CodeCommit sudah ditutup untuk pelanggan baru sejak Juli 2024, tapi masih bisa muncul di soal.</li></ul>
+</div>
+<div class="sub">
+<h4>Orchestration: Amazon MWAA vs Step Functions</h4>
+<ul><li>Amazon MWAA adalah Apache Airflow managed. Workflow ditulis sebagai DAG berisi task dengan dependency (Spark job, Glue job, AWS Batch job).</li><li>Step Functions adalah layanan serverless berbentuk state machine. Tiap state bisa menjalankan task, membuat keputusan, atau menunggu event.</li><li>Step Functions punya error handling, retry, dan visualisasi workflow bawaan.</li><li>MWAA cocok untuk workflow kompleks yang fleksibel dan berbasis kode. Step Functions cocok untuk workflow serverless dan event-driven dengan layanan AWS.</li></ul>
+</div>
+<div class="sub">
+<h4>Troubleshooting MWAA</h4>
+<ul><li>Cek CloudWatch Logs untuk error dan exception, lalu log Apache Airflow sendiri.</li><li>Periksa IAM role dan permission untuk MWAA, DAG, dan layanan terkait (Glue, S3, EMR).</li><li>Pastikan dependency dan file reference DAG benar, dan layanan eksternal bisa diakses dari environment MWAA.</li><li>Sesuaikan jumlah dan ukuran worker node supaya tidak out-of-memory.</li><li>Uji DAG di lokal atau test environment dulu, pakai versi Airflow dan plugin terbaru.</li></ul>
+</div>
+<div class="sub">
+<h4>Consume dan maintain data API</h4>
+<ul><li>Lambda memanggil API dan memproses respons, dipicu event atau API Gateway.</li><li>API Gateway memberi endpoint managed untuk klien eksternal dan bisa jadi frontend untuk Lambda.</li><li>AWS SDK menangani authentication, signing request, dan parsing respons.</li><li>Pantau error rate dan latency dengan CloudWatch.</li><li>Caching dengan API Gateway caching atau ElastiCache. Throttling dan rate limiting di API Gateway mencegah penyalahgunaan.</li><li>Amankan dengan IAM dan OAuth. API versioning menjaga backward compatibility. Lambda layers mengatur dependency dan mengecilkan package.</li></ul>
+</div>
+<div class="sub">
+<h4>Query dan events</h4>
+<ul><li>Athena cocok untuk eksplorasi cepat tanpa setup infrastruktur dan bayar per query. Hasil bisa diunduh atau disimpan ke S3.</li><li>EventBridge rule mencocokkan event berdasarkan pattern (atribut, custom event bus), lalu mengirim ke satu atau lebih target.</li><li>API call ke EventBridge dicatat CloudTrail. EventBridge schema registry adalah fitur opsional untuk mengelola event schema.</li><li>Contoh Step Functions: Lambda cek ekstensi file, Choice state memutuskan. File didukung diproses Lambda kedua, file tidak didukung memicu notifikasi SNS.</li><li>CloudTrail tidak mencatat object-level data events S3 secara default. Buat trail yang mencatat management dan data events.</li><li>EventBridge rule dengan service S3, operasi dan bucket tertentu, dan target state machine memulai workflow saat file masuk.</li></ul>
+</div>
+<div class="sub is-pola">
+<h4>Pola soal</h4>
+<table class="pola"><thead><tr><th>Kalau soal menyebut</th><th>Pilih</th></tr></thead><tbody><tr><td>Workflow kompleks berbasis kode, DAG, Airflow</td><td>Amazon MWAA.</td></tr><tr><td>Workflow serverless dan event-driven dengan retry bawaan</td><td>Step Functions.</td></tr><tr><td>Bangun ulang infrastruktur pipeline secara konsisten</td><td>CloudFormation template.</td></tr><tr><td>Commit kode lalu otomatis build dan unit test</td><td>CodePipeline dengan CodeBuild.</td></tr><tr><td>Picu proses saat file baru masuk S3 lewat CloudTrail dan EventBridge</td><td>aktifkan CloudTrail data events, karena default tidak dicatat.</td></tr><tr><td>API kebanjiran request</td><td>throttling dan rate limiting di API Gateway.</td></tr><tr><td>Respons API lambat karena backend terbebani</td><td>API Gateway caching atau ElastiCache.</td></tr><tr><td>DAG MWAA gagal</td><td>cek CloudWatch Logs dan log Airflow, lalu IAM, dependency, dan ukuran worker.</td></tr></tbody></table>
+</div>
+</details>
+<details class="card lesson" open id="d3l2"><summary><h3>Lesson 2: Analyze data by using AWS services</h3></summary>
+<div class="sub">
+<h4>Operasi manipulasi data</h4>
+<ul><li>Aggregation merangkum banyak record jadi satu nilai: Redshift (sum, average, count), Athena (GROUP BY), OpenSearch Service (date histogram, term aggregation).</li><li>Rolling average menghitung rata-rata dalam window untuk meratakan fluktuasi: Redshift (window function AVG) dan QuickSight (moving calculation).</li><li>Grouping: Redshift dan Athena (GROUP BY), QuickSight (dimensions dan aggregations).</li><li>Pivoting mengubah baris jadi kolom: Redshift (PIVOT clause) dan QuickSight (pivot table).</li></ul>
+</div>
+<div class="sub">
+<h4>Layanan untuk data consumer</h4>
+<ul><li>QuickSight: dashboard interaktif dan ad hoc analysis.</li><li>AWS Glue DataBrew: visual data preparation tanpa kode.</li><li>Athena: SQL di data S3. Redshift: SQL untuk dataset besar. EMR: Spark dan Hadoop.</li><li>AWS Glue: discover, catalog, transform, dan generate kode ETL otomatis.</li><li>AWS Data Pipeline: orkestrasi data antar layanan AWS dan on-premises. Catatan: Data Pipeline sudah maintenance mode, tidak menerima pelanggan baru.</li><li>Lake Formation: akses aman ke data dari banyak sumber di data lake.</li></ul>
+</div>
+<div class="sub">
+<h4>Contoh skenario</h4>
+<ul><li>Script di EC2 tiap 8 jam membersihkan data S3 jadi CSV untuk spreadsheet, lalu butuh dashboard dan search. Solusi: pindah ke Lambda, kirim hasil ke OpenSearch, picu dengan EventBridge tiap 8 jam.</li><li>Data sensor IoT dengan laporan visual harian yang cost-effective: EMR transient cluster agregasi tiap malam lalu otomatis terminate, laporan di QuickSight.</li><li>EMR punya dua jenis cluster: transient dan persistent.</li></ul>
+</div>
+<div class="sub">
+<h4>SQL di berbagai layanan</h4>
+<ul><li>Sintaks SQL konsisten walau tiap layanan menjalankannya berbeda. RDS dan Aurora memakai SQL untuk CRUD.</li><li>DynamoDB mendukung PartiQL, bahasa query kompatibel SQL untuk data terstruktur, semi-structured, nested, dan schemaless.</li><li>Amazon DocumentDB kompatibel MongoDB dan bisa memakai query mirip SQL.</li><li>Athena bisa menjalankan aplikasi Spark lewat Python atau Athena notebook APIs. EMR menyediakan Jupyter Notebook untuk kode Spark.</li></ul>
+</div>
+<div class="sub">
+<h4>Verifikasi dan cleaning data</h4>
+<ul><li>Lambda untuk validasi dan enrichment custom. Athena untuk verifikasi berbasis SQL.</li><li>QuickSight untuk eksplorasi visual. Jupyter Notebooks untuk cleaning kompleks.</li><li>SageMaker Data Wrangler untuk menyiapkan data bagi model ML.</li><li>Satu workflow wajar memakai beberapa layanan sekaligus.</li></ul>
+</div>
+<div class="sub is-pola">
+<h4>Pola soal</h4>
+<table class="pola"><thead><tr><th>Kalau soal menyebut</th><th>Pilih</th></tr></thead><tbody><tr><td>Rolling atau moving average</td><td>Redshift window function atau QuickSight moving calculation.</td></tr><tr><td>Pivot baris jadi kolom</td><td>Redshift PIVOT clause atau pivot table QuickSight.</td></tr><tr><td>Dashboard plus fitur search atau log analytics</td><td>Amazon OpenSearch Service.</td></tr><tr><td>Batch harian cost-effective di EMR</td><td>transient cluster yang otomatis terminate.</td></tr><tr><td>Dashboard interaktif untuk business user</td><td>QuickSight.</td></tr><tr><td>Clean dan normalize data secara visual tanpa kode</td><td>AWS Glue DataBrew.</td></tr><tr><td>Query DynamoDB dengan sintaks mirip SQL</td><td>PartiQL.</td></tr><tr><td>Database kompatibel MongoDB</td><td>Amazon DocumentDB.</td></tr><tr><td>Siapkan data untuk model ML</td><td>SageMaker Data Wrangler.</td></tr><tr><td>Ganti cron di EC2 tanpa server</td><td>Lambda dipicu EventBridge.</td></tr></tbody></table>
+</div>
+</details>
+<details class="card lesson" open id="d3l3"><summary><h3>Lesson 3: Maintain and monitor data pipelines</h3></summary>
+<div class="sub">
+<h4>Monitoring dan observability</h4>
+<ul><li>Sisi data: cek input, output, dan schema. Jalankan quality test di input dan hasil transformasi supaya bisa flag issue, rollback, dan cari root cause.</li><li>Metric operasi: query queue length, query concurrency, memory usage, storage utilization, network latency, disk I/O.</li><li>Query lambat direfactor. Kalau query sudah bagus, tune database (cluster atau cache tabel) atau scale up compute.</li><li>Tool: CloudWatch, X-Ray, CloudWatch Logs Insights, GuardDuty, Inspector, Security Hub. Aplikasi harus di-instrument untuk traces, metrics, dan logs.</li></ul>
+</div>
+<div class="sub">
+<h4>Logging data aplikasi</h4>
+<ul><li>CloudWatch Logs menyimpan log dan memberi notifikasi saat threshold tercapai.</li><li>CloudWatch Events mengirim system events near real-time dengan rule. Catatan: CloudWatch Events sekarang bagian dari EventBridge.</li><li>EventBridge merutekan event dari aplikasi sendiri, SaaS, dan layanan AWS ke target seperti Lambda.</li><li>X-Ray memberi end-to-end tracing untuk aplikasi terdistribusi dan microservices.</li><li>Lambda otomatis mencatat tiap invocation. ALB access logs mencatat request time, client IP, user agent.</li><li>RDS punya error log, slow query log, dan general log.</li><li>Log group adalah wadah log streams. Bisa dibuat lewat CloudFormation. Default retensi CloudWatch Logs selamanya, atur retention policy untuk biaya dan aturan retensi.</li></ul>
+</div>
+<div class="sub">
+<h4>Traceability dan audit</h4>
+<ul><li>CloudTrail mencatat semua API call: siapa, apa, kapan. Log dikirim ke S3 atau CloudWatch Logs.</li><li>AWS Config mencatat riwayat konfigurasi resource. AWS Managed Rules menilai kepatuhan terhadap best practice.</li><li>CloudFormation StackSets men-deploy konfigurasi CloudTrail, CloudWatch, dan Config ke banyak akun dan Region.</li><li>VPC Flow Logs mencatat IP traffic network interface di VPC.</li><li>Security Hub menggabungkan finding GuardDuty, Inspector, dan Config ke satu dashboard.</li><li>Macie mengirim policy finding dan sensitive data finding ke EventBridge sebagai event, dan ke Security Hub kalau publication settings diatur. Macie tidak mengirim log ke CloudWatch Logs.</li></ul>
+</div>
+<div class="sub">
+<h4>Troubleshooting performa</h4>
+<ul><li>Bandingkan CPU, memory, network, disk I/O, dan performa database dengan baseline.</li><li>Cek AWS Health Dashboard dulu sebelum debug aplikasi.</li><li>Baca log aplikasi di CloudWatch Logs, lalu log spesifik Lambda, RDS, atau EC2.</li><li>VPC Flow Logs dan Network Load Balancer access logs membantu melihat latency dan packet loss.</li><li>Kasus Kinesis Data Streams 40 shard, consumer KCL di Auto Scaling group, hasil ke DynamoDB: CPU di bawah 35 persen dan tidak ada ProvisionedThroughputExceededException. Jadi naikkan write capacity DynamoDB.</li><li>Redshift dengan long running query: atur scaling pada workload management (WLM) queue lewat parameter group, supaya query pendek tidak antre.</li></ul>
+</div>
+<div class="sub">
+<h4>Error handling per layanan</h4>
+<ul><li>Managed service menangani banyak error sendiri. Di EMR dan Kinesis Data Streams, kamu yang memprogram perilaku saat error.</li><li>Aplikasi Hadoop baru di EMR: aktifkan debugging, uji dengan subset data kecil yang representatif, jalankan step satu per satu.</li><li>Kinesis Data Streams: masalah producer (gagal connect, lambat menulis) dan consumer (masalah record, menerima lambat).</li><li>Managed Service for Apache Flink: masalah umum adalah akses stream, data hilang, gagal proses, error aplikasi. Selidiki lewat CloudWatch Logs.</li><li>Flink bisa mendeteksi anomali dengan random cut forest, lalu Lambda bertindak. Catatan: RANDOM_CUT_FOREST berasal dari Kinesis Data Analytics for SQL, yang sudah dihentikan AWS.</li><li>Firehose retry sampai retry duration habis, lalu backup ke S3 backup bucket. Kalau tujuan S3 atau backup S3 gagal, retry sampai retention period habis. Catatan: namanya sekarang Amazon Data Firehose.</li></ul>
+</div>
+<div class="sub is-pola">
+<h4>Pola soal</h4>
+<table class="pola"><thead><tr><th>Kalau soal menyebut</th><th>Pilih</th></tr></thead><tbody><tr><td>Siapa mengubah apa dan kapan</td><td>CloudTrail.</td></tr><tr><td>Riwayat konfigurasi resource dan cek compliance</td><td>AWS Config dengan Managed Rules.</td></tr><tr><td>Deploy konfigurasi logging ke banyak akun dan Region</td><td>CloudFormation StackSets.</td></tr><tr><td>Tracing request di microservices</td><td>X-Ray.</td></tr><tr><td>Remediasi otomatis finding Macie (bucket jadi publik)</td><td>EventBridge rule ke Lambda, bukan CloudWatch Logs.</td></tr><tr><td>Biaya log CloudWatch Logs terus naik</td><td>atur retention policy.</td></tr><tr><td>Kinesis dan consumer sehat tapi latency tinggi, hasil ke DynamoDB</td><td>naikkan write capacity DynamoDB.</td></tr><tr><td>Query pendek di Redshift tertahan query panjang</td><td>atur WLM queue lewat parameter group.</td></tr><tr><td>Deteksi anomali di data streaming</td><td>Managed Service for Apache Flink dengan random cut forest.</td></tr></tbody></table>
+</div>
+</details>
+<details class="card lesson" open id="d3l4"><summary><h3>Lesson 4: Ensure data quality</h3></summary>
+<div class="sub">
+<h4>Prinsip</h4>
+<ul><li>Konsumen harus percaya pada data. Kerja mundur dari pelanggan: siapa pemakai, bagaimana dipakai, apa yang dibutuhkan.</li><li>Tidak menerbitkan data lebih baik daripada menerbitkan data buruk. Check otomatis harus bisa menghentikan pipeline.</li><li>Duplikat di kolom primary key: kirim notifikasi. Proses tidak selalu harus dihentikan seluruhnya.</li><li>Taruh check sebelum, selama, dan sesudah transformasi. Terlalu banyak check memicu false positive, terlalu sedikit membuat masalah lolos.</li></ul>
+</div>
+<div class="sub">
+<h4>Data profiling dan validation</h4>
+<ul><li>Profiling melihat null, distribusi, anomali, cardinality, relasi antar field, dan statistik (min, max, mean, median, standard deviation).</li><li>DataBrew membuat profil tanpa kode. Athena dan Redshift untuk profiling dengan SQL. EMR Spark untuk script custom. Ada juga tool di AWS Marketplace.</li><li>Validation punya empat dimensi: completeness, consistency, accuracy, integrity.</li><li>Check saat pemrosesan: DataBrew recipes untuk field kosong, format, dan uniqueness. EMR Spark untuk check custom.</li><li>Lambda untuk check kompleks dan remediasi, Step Functions untuk orkestrasi berdasarkan hasil validasi. Data Wrangler untuk missing value dan duplikat.</li></ul>
+</div>
+<div class="sub">
+<h4>Duplikat di Redshift</h4>
+<ul><li>Kasus: CSV di S3, Glue crawler mengisi Data Catalog, Glue job menulis ke Redshift, lalu muncul duplikat setelah dijalankan ulang.</li><li>Solusi: Glue job menulis ke staging table, lalu mengganti baris yang sudah ada di target sebelum data baru disimpan.</li><li>Merge: join staging table dengan target, lalu update dan insert. Upsert lewat Glue job menghilangkan duplikat.</li></ul>
+</div>
+<div class="sub">
+<h4>Data sampling</h4>
+<ul><li>S3 Select mengambil subset data dari object S3 dengan query mirip SQL. Catatan: S3 Select tidak tersedia untuk pelanggan baru sejak Juli 2024.</li><li>Athena dan Redshift: LIMIT clause.</li><li>EMR Spark: systematic, random, atau stratified sampling.</li><li>Data Wrangler: sampling untuk dataset seimbang. DataBrew: filter subset lewat transformasi.</li></ul>
+</div>
+<div class="sub">
+<h4>Data skew</h4>
+<ul><li>Data skew adalah distribusi tidak rata antar partition atau node, sehingga muncul bottleneck.</li><li>Deteksi: CloudWatch custom metrics (record per partition atau key, waktu proses) dengan alarm threshold.</li><li>Glue ETL: CloudWatch metrics dan Glue job bookmarks, yang membuat job lanjut dari record terakhir yang diproses.</li><li>EMR Spark: logging detail ke CloudWatch Logs, cari task lama, distribusi task tidak rata, partition yang skew. Real-time: Spark Streaming dengan Kinesis atau Kafka.</li><li>Penanganan: partitioning key dengan hash function, load balancing, replikasi data hotspot, shuffling, dynamic repartitioning.</li><li>Skew join: bloom filter atau skew join algorithm. EMR punya skew join optimization otomatis. Redshift punya adaptive join (hash join atau sort merge join).</li><li>Pre-processing (data binning, feature scaling, log transformation) dan task yang lebih kecil membantu meratakan beban.</li></ul>
+</div>
+<div class="sub">
+<h4>Partitioning dan bucketing di Athena</h4>
+<ul><li>Strategi umum: partisi per tanggal (year, month, day). Filter WHERE di kolom partisi hanya membaca prefix S3 terkait.</li><li>Partitioning dan bucketing sama-sama mengurangi data yang dipindai Athena.</li><li>Bucket di sini bukan S3 bucket. Bucket adalah file, hash function menentukan bucket tiap record, dan nomor bucket ada di nama file.</li><li>Engine v2 mendukung Hive bucketing. Engine v3 juga mendukung Spark bucketing. Default Hive. Untuk Spark, set bucketing_format ke spark di TBLPROPERTIES.</li></ul>
+</div>
+<div class="sub">
+<h4>Redshift Spectrum dan DataBrew rules</h4>
+<ul><li>Join data histori di S3 (terdaftar di Data Catalog) dengan tabel Redshift: Redshift Spectrum external table, lalu join dengan SQL.</li><li>DataBrew rules: completeness (null), format (email, nomor telepon), range (rentang angka), uniqueness (duplikat).</li><li>DataBrew menandai record yang tidak lolos, memberi statistik dan visualisasi, dan bisa diotomatiskan.</li></ul>
+</div>
+<div class="sub is-pola">
+<h4>Pola soal</h4>
+<table class="pola"><thead><tr><th>Kalau soal menyebut</th><th>Pilih</th></tr></thead><tbody><tr><td>Duplikat di Redshift setelah Glue job dijalankan ulang</td><td>staging table lalu merge atau upsert.</td></tr><tr><td>Profiling atau data quality rule tanpa kode</td><td>AWS Glue DataBrew.</td></tr><tr><td>Join data S3 dengan tabel Redshift tanpa memindahkan data</td><td>Redshift Spectrum.</td></tr><tr><td>Kurangi data yang dipindai Athena</td><td>partitioning per tanggal dan bucketing.</td></tr><tr><td>Dataset Athena di-bucket dengan Spark</td><td>set bucketing_format ke spark di TBLPROPERTIES.</td></tr><tr><td>Join lambat karena key skew di EMR</td><td>skew join optimization.</td></tr><tr><td>Pantau skew dan kirim alert</td><td>CloudWatch custom metrics dan alarm.</td></tr><tr><td>Glue job harus lanjut dari record terakhir</td><td>Glue job bookmarks.</td></tr><tr><td>Sampling cepat beberapa baris</td><td>LIMIT di Athena atau Redshift.</td></tr></tbody></table>
+</div>
+</details>
+<div class="card special sp-angka"><h3>Angka dan batas penting</h3><ul><li>Domain 3 punya 4 task statement (3.1 sampai 3.4).</li><li>CloudTrail tidak mencatat object-level data events S3 secara default.</li><li>Retensi default CloudWatch Logs: tanpa batas.</li><li>Skenario EC2 tiap 8 jam diganti Lambda yang dipicu EventBridge tiap 8 jam.</li><li>Skenario Kinesis: 40 shard, CPU di bawah 35 persen, tanpa ProvisionedThroughputExceededException.</li><li>EMR punya 2 jenis cluster: transient dan persistent.</li><li>Validation punya 4 dimensi. DataBrew menyebut 4 contoh rule.</li><li>Quality check di 3 titik: sebelum, selama, sesudah transformasi.</li><li>Athena engine v2: Hive bucketing. Engine v3: Hive dan Spark. Default Hive.</li></ul></div>
+<div class="card special sp-jebakan"><h3>Jebakan ujian</h3><ul><li>MWAA untuk workflow berbasis kode (DAG). Step Functions untuk workflow serverless event-driven.</li><li>Macie tidak mengirim log ke CloudWatch Logs. Remediasi otomatis lewat EventBridge.</li><li>CloudTrail mencatat API call. AWS Config mencatat riwayat konfigurasi dan compliance.</li><li>Tanpa CloudTrail data events, event object-level S3 tidak tercatat dan rule EventBridge berbasis CloudTrail tidak terpicu.</li><li>Saat latency tinggi, cek metric dulu sebelum menambah shard atau instance. Kalau CPU rendah dan tidak ada throughput exception, masalahnya di komponen lain.</li><li>Cek AWS Health Dashboard sebelum menyalahkan aplikasi sendiri.</li><li>Bucket di Athena bukan S3 bucket.</li><li>Kata &quot;cost-effective&quot; untuk job berkala di EMR mengarah ke transient cluster.</li><li>Di EMR dan Kinesis Data Streams, error handling harus diprogram sendiri.</li><li>Dashboard dengan search dan log analytics mengarah ke OpenSearch, bukan QuickSight.</li><li>Lebih banyak quality check tidak selalu lebih baik.</li></ul></div>
+<div class="card special sp-sumber"><h3>Sumber tambahan</h3><ul><li>Workflow Orchestration (<a href="https://docs.aws.amazon.com/whitepapers/latest/best-practices-building-data-lake-for-games/workflow-orchestration.html" target="_blank" rel="noopener">link</a>)</li><li>Tanpa judul, tipe cloud storage (<a href="https://aws.amazon.com/what-is/cloud-storage/" target="_blank" rel="noopener">link</a>)</li><li>Tanpa judul, contoh Python Glue data Medicaid (<a href="https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-samples-medicaid.html" target="_blank" rel="noopener">link</a>)</li><li>AWS Step Functions (<a href="http://aws.amazon.com/step-functions/" target="_blank" rel="noopener">link</a>)</li><li>Amazon Managed Workflows for Apache Airflow (<a href="http://aws.amazon.com/managed-workflows-for-apache-airflow/" target="_blank" rel="noopener">link</a>)</li><li>Tanpa judul, tutorial Amazon S3 (<a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/tutorials.html" target="_blank" rel="noopener">link</a>)</li><li>Using Apache Spark in Amazon Athena (<a href="https://docs.aws.amazon.com/athena/latest/ug/notebooks-spark.html" target="_blank" rel="noopener">link</a>)</li><li>Data Warehousing on AWS (<a href="https://docs.aws.amazon.com/whitepapers/latest/data-warehousing-on-aws/data-warehousing-on-aws.html" target="_blank" rel="noopener">link</a>)</li><li>Data Processing (<a href="https://docs.aws.amazon.com/step-functions/latest/dg/use-cases-data-processing.html" target="_blank" rel="noopener">link</a>)</li><li>PartiQL: A SQL-Compatible Query Language for Amazon DynamoDB (<a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ql-reference.html" target="_blank" rel="noopener">link</a>)</li><li>Tanpa judul, Amazon Redshift Management Guide (<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/welcome.html" target="_blank" rel="noopener">link</a>)</li><li>Tanpa judul, orkestrasi EMR dengan Apache Livy (<a href="https://aws.amazon.com/blogs/big-data/build-a-concurrent-data-orchestration-pipeline-using-amazon-emr-and-apache-livy/" target="_blank" rel="noopener">link</a>)</li><li>Amazon SageMaker Notebook Instances (<a href="https://docs.aws.amazon.com/sagemaker/latest/dg/nbi.html" target="_blank" rel="noopener">link</a>)</li><li>DevOps Guidance (<a href="https://docs.aws.amazon.com/wellarchitected/latest/devops-guidance/devops-guidance.html" target="_blank" rel="noopener">link</a>)</li><li>What Is AWS Glue DataBrew? (<a href="https://docs.aws.amazon.com/databrew/latest/dg/what-is.html" target="_blank" rel="noopener">link</a>)</li><li>Tanpa judul, Kinesis Data Streams quotas and limits (<a href="https://docs.amazonaws.cn/en_us/streams/latest/dev/service-sizes-and-limits.html" target="_blank" rel="noopener">link</a>)</li></ul></div>
+</section>
+<section class="domain" id="d4" data-dom="4">
+<div class="card dom-head"><h2>Domain 4: Data Security and Governance</h2><p class="muted">Mengamankan data pipeline: siapa boleh masuk, boleh apa, enkripsi dan masking, log audit, serta privasi dan tata kelola data.</p></div>
+<details class="card lesson" open id="d4l0"><summary><h3>Domain 4 introduction</h3></summary>
+<div class="sub">
+<h4>Isi domain</h4>
+<ul><li>Data dilindungi in transit dan at rest dengan encryption, tokenization, masking, obfuscation, dan access control.</li><li>Lima task statement: 4.1 authentication, 4.2 authorization, 4.3 encryption dan masking, 4.4 logs for audit, 4.5 privacy dan governance.</li><li>Yang wajib paham: IAM role, policy, group, network security, password policy, dan encryption.</li></ul>
+</div>
+<div class="sub is-pola">
+<h4>Pola soal</h4>
+<table class="pola"><thead><tr><th>Kalau soal menyebut</th><th>Pilih</th></tr></thead><tbody><tr><td>Akses jaringan ke resource di VPC</td><td>security group dan network ACL</td></tr><tr><td>Data pribadi dan lokasi penyimpanan per negara</td><td>PII dan data sovereignty (task 4.5)</td></tr><tr><td>Proteksi data menyeluruh</td><td>gabungan encryption, masking, dan access control</td></tr></tbody></table>
+</div>
+</details>
+<details class="card lesson" open id="d4l1"><summary><h3>Lesson 1: Apply authentication mechanisms</h3></summary>
+<div class="sub">
+<h4>Identitas di AWS</h4>
+<ul><li>Authentication memastikan siapa kamu. Authorization menentukan apa yang boleh diakses setelah itu.</li><li>Metode: password-based, certificate-based, role-based. Kenali use case dan tingkat keamanannya.</li><li>Cara masuk: root user, IAM user, assume IAM role, atau federated identity.</li><li>IAM Identity Center: sign-in workforce, akses multi-account, dan SSO ke aplikasi SAML 2.0.</li><li>IAM user untuk satu orang atau aplikasi, kredensial permanen. IAM role bisa di-assume siapa saja yang butuh, kredensial sementara.</li><li>Tidak bisa sign in sebagai IAM group. Group hanya untuk memberi izin ke banyak user.</li><li>Service memanggil service lain lewat izin calling principal, service role, atau service-linked role.</li></ul>
+</div>
+<div class="sub">
+<h4>Policy</h4>
+<ul><li>Jenis: identity-based (ke user, group, role), resource-based (ke resource seperti S3 bucket atau KMS key), dan trust policy.</li><li>IAM role butuh dua policy: trust policy (siapa boleh assume) dan identity-based policy (boleh apa).</li><li>Tanpa allow eksplisit, default AWS adalah deny.</li><li>AWS managed policy dikelola AWS dan tidak bisa diubah. Customer managed policy dibuat sendiri, bisa dipasang ke banyak identitas.</li><li>Inline policy satu banding satu dengan identitas, ikut terhapus saat identitasnya dihapus.</li></ul>
+</div>
+<div class="sub">
+<h4>Policy di endpoint dan service</h4>
+<ul><li>Akses lewat S3 access point hanya jalan kalau access point policy dan bucket policy sama-sama mengizinkan. Atau bucket mendelegasikan kontrol ke access point.</li><li>User default tidak punya izin mengelola VPC endpoint. Condition key <code>ec2:VpceServicePrivateDnsName</code> membatasi endpoint berdasarkan private DNS name.</li><li>API Gateway punya dua model izin: API management (developer) dan API execution (caller). Set authorization type method ke <code>AWS_IAM</code> agar caller wajib kirim kredensial.</li><li>API Gateway ke Lambda: IAM role dengan trust policy untuk API Gateway plus izin <code>lambda:InvokeFunction</code>.</li><li>Interface VPC endpoint ke CloudFormation bisa diberi endpoint policy, misalnya menolak create stack lewat endpoint itu.</li></ul>
+</div>
+<div class="sub">
+<h4>Jaringan, sertifikat, secrets</h4>
+<ul><li>Pengaman jaringan: security group, network ACL, private subnet, bastion host, NAT gateway, route table, AWS VPN, Direct Connect, VPC Flow Logs, Security Hub, Network Firewall.</li><li>ACM membuat, menyimpan, dan memperpanjang sertifikat SSL/TLS X.509. Bisa impor sertifikat pihak ketiga, atau ekspor sertifikat AWS Private CA untuk PKI internal.</li><li>Siklus secret: create, store, use, destroy.</li><li>Secrets Manager terintegrasi IAM (termasuk resource-based policy di secret) dan KMS (AWS managed key atau customer managed key).</li><li>Rotasi otomatis terjadwal untuk RDS, Redshift, DocumentDB. Secret lain (API key, OAuth token) lewat Lambda kustom.</li></ul>
+</div>
+<div class="sub is-pola">
+<h4>Pola soal</h4>
+<table class="pola"><thead><tr><th>Kalau soal menyebut</th><th>Pilih</th></tr></thead><tbody><tr><td>Kredensial sementara, akses lintas akun, atau federasi</td><td>IAM role</td></tr><tr><td>SSO workforce ke banyak akun</td><td>IAM Identity Center</td></tr><tr><td>Sertifikat TLS dibuat dan diperpanjang otomatis</td><td>ACM</td></tr><tr><td>Siapa yang boleh assume role</td><td>trust policy</td></tr><tr><td>Izin access point tidak berlaku</td><td>cek bucket policy, keduanya harus mengizinkan</td></tr><tr><td>Rotasi otomatis password RDS atau Redshift</td><td>Secrets Manager</td></tr><tr><td>QuickSight gagal impor data Athena dari S3 bucket baru, error insufficient permissions</td><td>izinkan bucket itu dari QuickSight console, karena QuickSight butuh otorisasi sendiri (cross-service)</td></tr></tbody></table>
+</div>
+</details>
+<details class="card lesson" open id="d4l2"><summary><h3>Lesson 2: Apply authorization mechanisms</h3></summary>
+<div class="sub">
+<h4>Prinsip</h4>
+<ul><li>Tujuannya least privilege untuk principal yang sudah terautentikasi.</li><li>Policy bisa dibangun dan dites sebagai kode di pipeline.</li><li>IAM Access Analyzer terus mencari resource yang bisa diakses dari luar akun. AWS Organizations menegakkan policy di banyak akun.</li></ul>
+</div>
+<div class="sub">
+<h4>RBAC dan ABAC</h4>
+<ul><li>RBAC: akses berdasarkan role. Lebih mudah dikelola.</li><li>ABAC: akses berdasarkan attribute dan tag di principal, resource, environment, atau application state.</li><li>Pilih ABAC kalau user butuh izin lintas role, role sulit didefinisikan, atau izin bergantung parameter dinamis.</li><li>Contoh: role bertag <code>access-project</code> heart, star, bolt. Satu policy memberi akses kalau tag role sama dengan tag resource.</li><li>ABAC granular tapi berat di awal. Keduanya bisa digabung (hybrid).</li></ul>
+</div>
+<div class="sub">
+<h4>Amazon Redshift</h4>
+<ul><li>User dikelola dengan <code>CREATE USER</code> dan <code>ALTER USER</code>, atau lewat JDBC/ODBC driver yang membuat temporary password.</li><li>Hanya superuser yang bisa membuat dan menghapus user. Superuser punya hak pemilik di semua database.</li><li>Dengan RBAC, grant dan revoke dilakukan di level role, tanpa mengubah izin tiap objek.</li></ul>
+</div>
+<div class="sub">
+<h4>Lake Formation dan Parameter Store</h4>
+<ul><li>Lake Formation mengatur akses data lake sampai level database, table, column, row, dan cell, untuk IAM dan external identity provider.</li><li>Berlaku saat diakses lewat Redshift Spectrum, Athena, Glue ETL, dan EMR for Spark.</li><li>LF-Tags dipasang ke database, table, atau column, mengganti ribuan definisi izin dengan beberapa tag.</li><li>Lake Formation bisa mengatur izin datashare Redshift secara terpusat.</li><li>Parameter Store (Systems Manager) menyimpan konfigurasi dan secret, tapi tanpa rotasi otomatis. Simpan secret di Secrets Manager lalu referensikan dari Parameter Store, nama diawali <code>/</code>.</li></ul>
+</div>
+<div class="sub is-pola">
+<h4>Pola soal</h4>
+<table class="pola"><thead><tr><th>Kalau soal menyebut</th><th>Pilih</th></tr></thead><tbody><tr><td>Resource bisa diakses dari luar akun</td><td>IAM Access Analyzer</td></tr><tr><td>Satu policy untuk banyak proyek berdasarkan tag</td><td>ABAC</td></tr><tr><td>Izin sederhana mengikuti jabatan</td><td>RBAC</td></tr><tr><td>Akses data lake sampai column, row, atau cell</td><td>Lake Formation</td></tr><tr><td>Ribuan izin tabel sulit dikelola</td><td>LF-Tags</td></tr><tr><td>Konfigurasi plus secret yang butuh rotasi</td><td>Secrets Manager, direferensikan dari Parameter Store</td></tr><tr><td>Siapa yang bisa membuat atau menghapus user Redshift</td><td>superuser</td></tr></tbody></table>
+</div>
+</details>
+<details class="card lesson" open id="d4l3"><summary><h3>Lesson 3: Ensure data encryption and masking</h3></summary>
+<div class="sub">
+<h4>KMS, CloudHSM, TLS</h4>
+<ul><li>AWS KMS membuat dan mengontrol key, terintegrasi dengan hampir semua service dan dengan CloudTrail untuk log pemakaian key.</li><li>CloudHSM dipakai kalau kamu harus mengelola langsung perangkat HSM. AWS mengurus hardware, patching, dan backup. Kamu mengurus scaling serta crypto account dan kredensial.</li><li>Di KMS dan CloudHSM, plaintext key tidak bisa dipakai di luar HSM.</li><li>Trafik antar data center dienkripsi di physical layer. Trafik di VPC dan antar VPC peering lintas Region dienkripsi di network layer. Semua endpoint AWS mendukung TLS.</li><li>Terminasi TLS dengan sertifikat sendiri: NLB, ALB, CloudFront, API Gateway.</li><li class=note>Catatan: transkrip menulis &quot;hardware security models&quot;, maksudnya hardware security modules.</li></ul>
+</div>
+<div class="sub">
+<h4>Enkripsi at rest dan EMR</h4>
+<ul><li>Pahami enkripsi at rest di EBS, S3, RDS, Redshift, ElastiCache, Lambda, EMR, Glue, SageMaker. SQS punya SSE untuk pesan sensitif.</li><li>Pahami beda client-side dan server-side encryption.</li><li>EBS terenkripsi di EMR tidak berarti local disk terenkripsi. Aktifkan local disk encryption di security configuration.</li><li>Enkripsi EBS terjadi di EC2 host. OS melihat data tidak terenkripsi kecuali ada end-to-end encryption.</li><li>Root volume semua node EMR terenkripsi: custom AMI. Salin snapshot ke target terenkripsi KMS, lalu pakai custom AMI ID di template CloudFormation.</li></ul>
+</div>
+<div class="sub">
+<h4>Tokenization, masking, salt</h4>
+<ul><li>Encryption memakai algoritma dan key, bisa didekripsi. Tokenization mengganti data dengan token acak tanpa proses matematis, relasinya disimpan di token vault.</li><li>Token tidak bisa dipetakan balik tanpa sistem tokenisasi. Contoh: pembayaran kartu kredit berulang.</li><li>Anonymization menghapus data sensitif. Masking menutupinya dengan nilai yang diubah.</li><li>Salt: data acak baru per password, digabung lalu di-hash, disimpan bersama hash. Salt tidak perlu dienkripsi.</li><li>Contoh tokenisasi serverless: Cognito, API Gateway, Lambda, KMS, DynamoDB client-side encryption library, cipher database dan application database. Lambda ke DynamoDB lewat gateway endpoint, ke KMS lewat interface endpoint.</li><li>Redshift Dynamic Data Masking (DDM) menyamarkan data saat query tanpa mengubah data tersimpan. Bisa per role, per cell dengan conditional column, dan beberapa policy di satu kolom.</li></ul>
+</div>
+<div class="sub is-pola">
+<h4>Pola soal</h4>
+<table class="pola"><thead><tr><th>Kalau soal menyebut</th><th>Pilih</th></tr></thead><tbody><tr><td>Harus mengelola perangkat HSM sendiri</td><td>CloudHSM</td></tr><tr><td>Key terpusat dengan log pemakaian</td><td>KMS plus CloudTrail</td></tr><tr><td>EBS EMR terenkripsi, local disk aman?</td><td>tidak, aktifkan di security configuration</td></tr><tr><td>Root volume node EMR terenkripsi</td><td>custom AMI dengan EBS root terenkripsi KMS</td></tr><tr><td>Ganti data sensitif dengan nilai acak lewat vault</td><td>tokenization</td></tr><tr><td>Simpan hash password aman</td><td>salt acak per password</td></tr><tr><td>Data sensitif tersamar saat query Redshift</td><td>Dynamic Data Masking</td></tr><tr><td>Antrean pesan sensitif</td><td>SQS dengan SSE</td></tr></tbody></table>
+</div>
+</details>
+<details class="card lesson" open id="d4l4"><summary><h3>Lesson 4: Prepare logs for audit</h3></summary>
+<div class="sub">
+<h4>Retensi dan CloudTrail Lake</h4>
+<ul><li>HIPAA dan PCI mewajibkan data disimpan dalam periode tertentu, bisa dicari, lalu dihapus sesuai aturan.</li><li>CloudWatch Logs default menyimpan log selamanya. Atur retention policy di log group.</li><li>CloudTrail Lake: query SQL terpusat atas event lintas akun dan Region, termasuk aktivitas dari luar AWS.</li><li>Event data store berisi satu kategori saja: CloudTrail events, Config configuration items, Audit Manager evidence, atau event luar AWS. Gabungkan dengan SQL JOIN.</li><li>Trail tidak mendukung otorisasi berbasis tag, event data store mendukung.</li></ul>
+</div>
+<div class="sub">
+<h4>EMR dan analisis log</h4>
+<ul><li>EMR menulis log di primary node, <code>/mnt/var/log/</code>, dan bisa mengarsipkan ke S3.</li><li>CloudTrail mencatat semua API call EMR. Trail mengirim terus ke S3. Tanpa trail, hanya event terbaru di Event history.</li><li>CloudWatch Logs Insights untuk mencari penyebab masalah. Field otomatis ditemukan untuk Route 53, Lambda, CloudTrail, VPC, dan log JSON.</li><li>Athena CloudWatch connector: log group jadi schema, log stream jadi table, view <code>all_log_streams</code> untuk semua stream.</li><li>Log group bisa di-stream ke OpenSearch Service nyaris real time lewat subscription.</li><li class=note>Catatan: CloudWatch Events sekarang bagian dari Amazon EventBridge.</li></ul>
+</div>
+<div class="sub is-pola">
+<h4>Pola soal</h4>
+<table class="pola"><thead><tr><th>Kalau soal menyebut</th><th>Pilih</th></tr></thead><tbody><tr><td>Query SQL event CloudTrail lintas akun dan Region</td><td>CloudTrail Lake</td></tr><tr><td>Gabungkan CloudTrail events dan Config items</td><td>dua event data store, SQL JOIN</td></tr><tr><td>Log tidak boleh disimpan selamanya</td><td>retention policy di log group</td></tr><tr><td>Cari penyebab error dari log</td><td>CloudWatch Logs Insights</td></tr><tr><td>Query log CloudWatch dengan SQL</td><td>Athena CloudWatch connector</td></tr><tr><td>Analisis log nyaris real time</td><td>subscription ke OpenSearch Service</td></tr><tr><td>Riwayat API call EMR jangka panjang</td><td>trail ke S3</td></tr></tbody></table>
+</div>
+</details>
+<details class="card lesson" open id="d4l5"><summary><h3>Lesson 5: Understand data privacy and governance</h3></summary>
+<div class="sub">
+<h4>Proteksi sepanjang lifecycle</h4>
+<ul><li>Field-level encryption mengenkripsi field sensitif saja dan menjaga struktur payload. Full payload encryption membuat payload tak terpakai sebelum didekripsi semua.</li><li>Lindungi data sedini mungkin saat ingestion. CloudFront plus Lambda@Edge melindungi data di edge sehingga sistem downstream tidak melihatnya.</li><li>Contoh pipeline: IoT Core (MQTT), Kinesis Data Firehose ke S3, Glue ETL memanggil Amazon Comprehend untuk mendeteksi data sensitif, Lake Formation membatasi akses analis di Athena.</li><li class=note>Catatan: Kinesis Data Firehose sekarang bernama Amazon Data Firehose.</li></ul>
+</div>
+<div class="sub">
+<h4>Sensitive data discovery</h4>
+<ul><li>Scan terjadwal (default empat kali sehari, tiap 6 jam), sebelum crawler dan setelah redaksi atau tokenisasi.</li><li>Scan menambah minimal 5 sampai 10 menit, naik linear dengan ukuran objek, plus startup time konstan per job.</li><li>Komponen: bucket raw, scanning, manual review, scanned. Macie memindai, Step Functions mengorkestrasi Lambda, EventBridge memicu jadwal, SNS memberi notifikasi, API Gateway menerima keputusan reviewer.</li><li>Yang kurang: backup plan, DR plan, dan data privacy strategy agar backup atau replikasi tidak ke Region terlarang (data sovereignty).</li></ul>
+</div>
+<div class="sub">
+<h4>Backup data lake</h4>
+<ul><li>Storage admin memakai S3 versioning, Same-Region Replication, Cross-Region Replication, dan Object Lock.</li><li>AWS Backup membuat backup plan (frekuensi, retensi) di satu akun atau banyak akun lewat Organizations. Backup vault punya policy, key, dan lock sendiri.</li><li>Backup bucket raw biasanya cukup karena data turunan bisa dibuat ulang. Kalau raw berisi PII, backup data de-identified.</li><li>Pilih bucket lewat tag, misalnya &quot;data protection level&quot; = &quot;critical&quot;.</li><li>Continuous backup untuk PITR, periodic untuk compliance. Copy to destination ke vault di akun atau Region lain. Enkripsi pakai KMS key milik vault.</li><li>AWS Backup Audit Manager melaporkan compliance backup lewat custom framework.</li></ul>
+</div>
+<div class="sub">
+<h4>Redshift dan AWS Config</h4>
+<ul><li>User Redshift tidak bisa di-drop kalau masih memiliki atau punya izin atas objek datashare.</li><li>Kolom rahasia di tabel Redshift: column-level GRANT dan REVOKE. Lake Formation plus Redshift Spectrum juga bisa.</li><li>AWS Config mencatat configuration item tiap resource lewat API describe atau list, termasuk related resource (contoh: ubah security group, instance terkait ikut dicatat).</li><li>Item dikirim lewat configuration stream ke S3. Tiap Config rule memakai Lambda function. Notifikasi bisa ke SNS.</li></ul>
+</div>
+<div class="sub is-pola">
+<h4>Pola soal</h4>
+<table class="pola"><thead><tr><th>Kalau soal menyebut</th><th>Pilih</th></tr></thead><tbody><tr><td>Enkripsi field sensitif saja</td><td>field-level encryption</td></tr><tr><td>Lindungi data di edge saat ingestion</td><td>CloudFront plus Lambda@Edge</td></tr><tr><td>Temukan data sensitif di S3 terjadwal</td><td>Macie, dengan Step Functions dan EventBridge</td></tr><tr><td>Deteksi PII dalam Glue ETL</td><td>Amazon Comprehend</td></tr><tr><td>Backup atau replikasi ke Region terlarang</td><td>data privacy strategy (data sovereignty)</td></tr><tr><td>Backup terpusat lintas akun</td><td>AWS Backup dengan Organizations</td></tr><tr><td>Restore S3 ke titik waktu tertentu</td><td>continuous backup (PITR)</td></tr><tr><td>Laporan compliance backup</td><td>AWS Backup Audit Manager</td></tr><tr><td>Kolom rahasia Redshift untuk user tertentu</td><td>column-level GRANT dan REVOKE</td></tr><tr><td>Lacak perubahan konfigurasi resource</td><td>AWS Config</td></tr></tbody></table>
+</div>
+</details>
+<div class="card special sp-angka"><h3>Angka dan batas penting</h3><ul><li>Domain 4 punya lima task statement.</li><li>Siklus secret: empat fase.</li><li>Rotasi bawaan Secrets Manager: RDS, Redshift, DocumentDB.</li><li>IAM role butuh dua policy.</li><li>Level kontrol Lake Formation: database, table, column, row, cell.</li><li>Lapisan antara OS dan EBS: tiga (local disk, EBS volume, volume yang disajikan ke VM).</li><li>CloudWatch Logs default retensi tanpa batas.</li><li>Log EMR default: primary node, <code>/mnt/var/log/</code>.</li><li>CloudTrail Lake: satu event data store untuk satu kategori. CloudWatch metrics menampilkan data masuk satu jam terakhir atau selama retensi.</li><li>Scan data sensitif: default tiap 6 jam (empat kali sehari), tambahan minimal 5 sampai 10 menit.</li><li>Referensi Secrets Manager dari Parameter Store: nama diawali <code>/</code>.</li></ul></div>
+<div class="card special sp-jebakan"><h3>Jebakan ujian</h3><ul><li>Authentication dan authorization sering ditukar.</li><li>IAM user kredensial permanen, IAM role kredensial sementara.</li><li>AWS managed policy tidak bisa diedit. Izin kustom yang dipakai ulang: customer managed policy, bukan inline.</li><li>Access point policy saja tidak cukup, bucket policy juga harus mengizinkan.</li><li>Izin user tidak otomatis berlaku untuk service. QuickSight butuh izin sendiri ke S3.</li><li>Parameter Store tidak punya rotasi otomatis, Secrets Manager punya.</li><li>KMS dan CloudHSM mirip. CloudHSM hanya kalau soal minta kontrol langsung atas HSM.</li><li>EBS terenkripsi di EMR tidak mengenkripsi local disk.</li><li>Tokenization bukan encryption, tidak ada proses matematis.</li><li>Anonymization menghapus, masking menutupi. Salt tidak perlu dienkripsi.</li><li>Redshift DDM tidak mengubah data tersimpan.</li><li>Trail CloudTrail tidak mendukung otorisasi tag, event data store CloudTrail Lake mendukung.</li><li>Tanpa trail, CloudTrail tidak mengirim event ke S3, hanya Event history terbaru.</li><li>Backup vault terpisah dari S3 Object Lock dan bucket policy.</li></ul></div>
+<div class="card special sp-sumber"><h3>Sumber tambahan</h3><ul><li>What Is IAM? (<a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html" target="_blank" rel="noopener">link</a>)</li><li>Tanpa judul, tipe cloud storage (<a href="https://aws.amazon.com/what-is/cloud-storage/#:~:text=a%20massive%20scale.-,What%20are%20the%20types%20of%20cloud%20storage%3F,has%20its%20own%20use%20cases." target="_blank" rel="noopener">link</a>)</li><li>Tanpa judul, contoh Glue Python Medicaid (<a href="https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-samples-medicaid.html" target="_blank" rel="noopener">link</a>)</li><li>What Is AWS Certificate Manager? (<a href="https://docs.aws.amazon.com/acm/latest/userguide/acm-overview.html" target="_blank" rel="noopener">link</a>)</li><li>Example IAM Identity-Based Policies (<a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_examples.html" target="_blank" rel="noopener">link</a>)</li><li>Tanpa judul, tutorial Amazon S3 (<a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/tutorials.html" target="_blank" rel="noopener">link</a>)</li><li>AmazonDynamoDBFullAccess (<a href="https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonDynamoDBFullAccess.html" target="_blank" rel="noopener">link</a>)</li><li>IAMFullAccess (<a href="https://docs.aws.amazon.com/aws-managed-policy/latest/reference/IAMFullAccess.html" target="_blank" rel="noopener">link</a>)</li><li>AWSCodeCommitPowerUser (<a href="https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AWSCodeCommitPowerUser.html" target="_blank" rel="noopener">link</a>)</li><li>AWSKeyManagementServicePowerUser (<a href="https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AWSKeyManagementServicePowerUser.html" target="_blank" rel="noopener">link</a>)</li><li>Tanpa judul, Amazon Redshift management guide (<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/welcome.html" target="_blank" rel="noopener">link</a>)</li><li>Tanpa judul, pipeline orkestrasi EMR dan Apache Livy (<a href="https://aws.amazon.com/blogs/big-data/build-a-concurrent-data-orchestration-pipeline-using-amazon-emr-and-apache-livy/" target="_blank" rel="noopener">link</a>)</li><li>AWS Access Levels (<a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_understand-policy-summary-access-level-summaries.html#access_policies_access-level" target="_blank" rel="noopener">link</a>)</li><li>AmazonMobileAnalyticsWriteOnlyAccess (<a href="https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonMobileAnalyticsWriteOnlyAccess.html" target="_blank" rel="noopener">link</a>)</li><li>AmazonEC2ReadOnlyAccess (<a href="https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonEC2ReadOnlyAccess.html" target="_blank" rel="noopener">link</a>)</li><li>Tanpa judul, kuota Kinesis Data Streams (<a href="https://docs.amazonaws.cn/en_us/streams/latest/dev/service-sizes-and-limits.html" target="_blank" rel="noopener">link</a>)</li><li>Delegating Access Control to Access Points (<a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-policies.html#access-points-delegating-control" target="_blank" rel="noopener">link</a>)</li><li>What Is Amazon API Gateway? (<a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/welcome.html" target="_blank" rel="noopener">link</a>)</li><li>How Amazon API Gateway Works with IAM (<a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/security_iam_service-with-iam.html" target="_blank" rel="noopener">link</a>)</li><li>Insufficient Permissions When Using Athena with Amazon QuickSight (<a href="https://docs.aws.amazon.com/quicksight/latest/user/troubleshoot-athena-insufficient-permissions.html" target="_blank" rel="noopener">link</a>)</li><li>Consolidate and Query AWS CloudTrail Data across Accounts and Regions Using AWS CloudTrail Lake (<a href="https://aws.amazon.com/blogs/mt/consolidate-and-query-aws-cloudtrail-data-across-accounts-and-regions-using-aws-cloudtrail-lake/" target="_blank" rel="noopener">link</a>)</li><li>Tutorial: Detecting and Redacting PII Data with S3 Object Lambda and Amazon Comprehend (<a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/tutorial-s3-object-lambda-redact-pii.html" target="_blank" rel="noopener">link</a>)</li></ul></div>
+</section>
+</main>
+<footer class="footer"><span>Ringkasan pribadi untuk belajar, bukan materi resmi AWS. Kalau ada yang bertentangan, dokumentasi AWS dan exam guide yang menang.</span></footer>
+<script>
+const KEY = 'dea-ringkasan-tab';
+const tabs = document.querySelectorAll('#tabs button');
+const doms = document.querySelectorAll('.domain');
+function show(t) {
+  tabs.forEach(b => b.classList.toggle('active', b.dataset.tab === t));
+  doms.forEach(d => d.classList.toggle('hide', t !== 'all' && d.dataset.dom !== t));
+  try { localStorage.setItem(KEY, t); } catch (e) {}
+}
+tabs.forEach(b => b.addEventListener('click', () => show(b.dataset.tab)));
+let start = '1';
+try { start = localStorage.getItem(KEY) || '1'; } catch (e) {}
+show(start);
+document.getElementById('onlyPola').addEventListener('change', e => document.body.classList.toggle('only-pola', e.target.checked));
+document.getElementById('collapse').addEventListener('change', e => document.querySelectorAll('details.lesson').forEach(d => d.open = !e.target.checked));
+const orig = new Map();
+document.querySelectorAll('li, td').forEach(el => orig.set(el, el.innerHTML));
+document.getElementById('q').addEventListener('input', e => {
+  const q = e.target.value.trim().toLowerCase();
+  if (q) show('all');
+  const re = q ? new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi') : null;
+  orig.forEach((h, el) => { el.innerHTML = re ? h.replace(/>([^<]+)</g, (m, t) => '>' + t.replace(re, '<mark>$1</mark>') + '<') : h; });
+  document.querySelectorAll('li, table.pola tr').forEach(el => {
+    if (el.closest('thead')) return;
+    el.classList.toggle('hide', !!q && !el.textContent.toLowerCase().includes(q));
+  });
+  document.querySelectorAll('.sub, .special').forEach(s => s.classList.toggle('hide', !!q && !s.querySelector('li:not(.hide), tbody tr:not(.hide)')));
+  document.querySelectorAll('details.lesson').forEach(d => {
+    const any = d.querySelector('.sub:not(.hide)');
+    d.classList.toggle('hide', !!q && !any);
+    if (q && any) d.open = true;
+  });
+});
+</script>
+</body>
+</html>
